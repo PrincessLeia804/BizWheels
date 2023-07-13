@@ -14,20 +14,29 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
-
+const expressLayouts = require("express-ejs-layouts")
+const path = require('path')
+const favicon = require("express-favicon");
 // Middleware configuration
 module.exports = (app) => {
   // Because this is a server that will accept requests from outside and it will be hosted ona server with a `proxy`, express needs to know that it should trust that setting.
   // Services like heroku use something called a proxy and you need to add this to your server
   app.set("trust proxy", 1);
-
+  app.set('views', path.join(__dirname, '..', 'views'))
+  // Sets the view engine to ejs
+  app.set('view engine', 'ejs')
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
       origin: [FRONTEND_URL]
     })
   );
+  app.use(expressLayouts)
+  // Handles access to the public folder
+  app.use(express.static(path.join(__dirname, '..', 'public')))
 
+  // Handles access to the favicon
+  app.use(favicon(path.join(__dirname, '..', 'public', 'images', 'favicon.ico')))
   // In development environment the app logs
   app.use(logger("dev"));
 

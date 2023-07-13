@@ -1,0 +1,38 @@
+<h2>Car Request Form</h2>
+
+<form action="/cars/request" method="POST">
+  <label for="date">Start date:</label>
+  <input type="date" id="startDate" name="startDate" value="<%=startDate%>" required>
+
+  <label for="date">End date:</label>
+  <input type="date" id="endDate" name="endDate" value="<%=endDate%>" required>
+
+  <button type="submit">Check availability</button>
+</form>
+
+<% if (availableCars && availableCars.length > 0) { %>
+<h3>Available Cars:</h3>
+<div class="card-container">
+  <% availableCars.forEach(function(car) { %>
+  <form method="POST" action="/cars/submit-request">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
+        <p class="card-text">Description:
+        <ul>
+          <li><%= car.fuelType %></li>
+          <li><%= car.features %></li>
+          <li><%= car.registration %></li>
+        </ul>
+        <input type="hidden" name="carId" value="<%= car.id %>">
+        <input type="hidden" name="startDate" value="<%= startDate %>">
+        <input type="hidden" name="endDate" value="<%= endDate %>">
+        <button class="btn btn-primary">Request </button>
+      </div>
+    </div>
+  </form>
+  <% }) %>
+</div>
+<% } else { %>
+<p>No cars available for the selected date and time.</p>
+<% } %>
