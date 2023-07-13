@@ -20,7 +20,7 @@ const bookingSchema = new Schema(
         pickUpLocation: {
             type: String,
         },
-        dropOfLocation: {
+        dropOffLocation: {
             type: String,
         }
     },

@@ -8,8 +8,14 @@ require("./db");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
+// const expressLayouts = require("express-ejs-layouts")
 
 const app = express();
+
+// create absolute path to views-folder
+app.set('views', __dirname + "/views")
+app.set('view engine', 'ejs')
+// app.use(expressLayouts)
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);

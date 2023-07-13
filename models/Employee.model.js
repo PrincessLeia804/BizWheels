@@ -19,11 +19,6 @@ const employeeSchema = new Schema(
       lowercase: true,
       trim: true
     },
-    personellNumber: {
-      type: Number,
-      trim: true,
-      unique: true,
-    },
     password: {
       type: String,
       required: [true, 'Password is required.']
@@ -36,6 +31,7 @@ const employeeSchema = new Schema(
     },
     company: {
       type: String,
+      default: "LePa"
     }
   },
   {
