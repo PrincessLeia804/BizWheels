@@ -14,18 +14,23 @@
 <h3>Available Cars:</h3>
 <div class="card-container">
   <% availableCars.forEach(function(car) { %>
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
-      <p class="card-text">Description:
-      <ul>
-        <li><%= car.fuelType %></li>
-        <li><%= car.features %></li>
-      </ul>
-
-      <button class="btn btn-primary">Request </button>
+  <form method="POST" action="/cars/submit-request">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
+        <p class="card-text">Description:
+        <ul>
+          <li><%= car.fuelType %></li>
+          <li><%= car.features %></li>
+          <li><%= car.registration %></li>
+        </ul>
+        <input type="hidden" name="carId" value="<%= car.id %>">
+        <input type="hidden" name="startDate" value="<%= startDate %>">
+        <input type="hidden" name="endDate" value="<%= endDate %>">
+        <button class="btn btn-primary">Request </button>
+      </div>
     </div>
-  </div>
+  </form>
   <% }) %>
 </div>
 <% } else { %>
