@@ -28,7 +28,7 @@ router.post("/signup", async (req, res, next) => {
       await UserModel.findByIdAndUpdate(newSignup.id, {role: "admin"})
     }
     req.session.user = newSignup
-    res.render("user-profile", { userInSession: newSignup })
+    res.redirect("/profile")
   } catch (error) {
     console.log(error);
   }
@@ -55,7 +55,13 @@ router.post("/login", async (req, res, next) => {
         delete loggedUser.passwordHash
 
         req.session.user = loggedUser
+        
+        // check role and redirect to user / admin-dashboard
+        if(loggedUser.role === "admin"){
+          res.render("admin-profile")
+        }else{
         res.redirect("/profile")
+        }
 
       } else {
         // Password incorrect
@@ -79,7 +85,7 @@ router.post("/login", async (req, res, next) => {
 })
 
 /* SIGN OUT */
-router.post("/logout", (req, res, next) => {
+router.get("/logout", (req, res, next) => {
   req.session.destroy(err => {
     if (err) next(err)
     res.render("authentication/logout")

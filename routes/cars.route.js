@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const {checkCarAvailability, carRequested} = require("../controllers/carsController");
+const { isLoggedIn } = require("../middleware/route-guard");
 
 router.get("/", (req, res) => {
   res.json("Cars index will be here");
 });
 
-router.get("/request", async (req, res) => {
+router.get("/request", isLoggedIn, async (req, res) => {
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
@@ -17,7 +18,7 @@ router.get("/request", async (req, res) => {
   res.render("cars/car_request", { startDate, endDate, availableCars });
 });
 
-router.post("/request", async (req, res) => {
+router.post("/request", isLoggedIn, async (req, res) => {
   const { startDate, endDate } = req.body;
 
   try {
@@ -30,7 +31,7 @@ router.post("/request", async (req, res) => {
   }
 });
 
-router.post('/submit-request', async function(req, res) {
+router.post('/submit-request', isLoggedIn, async function(req, res) {
   const { startDate, endDate, carId } = req.body;
 console.log(req.body)
   try{

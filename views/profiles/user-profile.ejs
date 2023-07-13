@@ -1,0 +1,30 @@
+<% if (userInSession) { %>
+<nav>
+  <a href="/auth/logout"><button>Logout</button></a>
+</nav>
+<div>
+  <h1>Welcome to your Dashboard, <%- userInSession.firstName %></h1>
+  <div class="card-container">
+    <!-- User Profile -->
+    <a href="/profile/my-account" class="linked-cards">
+      <div class="card card-body">
+        <h3>My Account</h3>
+      </div>
+    </a>
+
+    <!-- Car reservation -->
+    <a href="" class="linked-cards">
+      <div class="card card-body">
+        <h3>Rent a Car</h3>
+      </div>
+    </a>
+
+    <!-- History -->
+    <a href="" class="linked-cards">
+      <div class="card card-body">
+        <h3>My Reservations</h3>
+      </div>
+  </div>
+</div>
+</a>
+<% } %>
