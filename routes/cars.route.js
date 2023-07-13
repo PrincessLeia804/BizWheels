@@ -40,12 +40,11 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
   const { startDate, endDate, carId } = req.body;
   console.log(req.body);
   try {
-    // TODO: Validate Car, user, and if still can book for the given dates
-    const car = await findCar(carId);
     const employeeId = req.session.user._id;
     const booking = await createBooking(carId, employeeId, startDate, endDate);
-
+    
     console.log(booking);
+    const car = await findCar(carId);
     res.render("cars/confirmation", { startDate, endDate, car });
   } catch (error) {
     console.log("Error creating the booking:", error);

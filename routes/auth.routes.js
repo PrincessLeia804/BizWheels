@@ -61,7 +61,7 @@ router.post("/login", async (req, res, next) => {
           // TODO: Not changing URL
           res.render("profiles/admin-profile")
         }else{
-        res.redirect("profiles/user-profile")
+        res.redirect("/profile")
         }
 
       } else {
