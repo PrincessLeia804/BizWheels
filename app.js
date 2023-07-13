@@ -25,6 +25,9 @@ require("./config")(app);
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
+const carsRouter = require('./routes/cars.route');
+app.use("/cars", carsRouter);
+
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
