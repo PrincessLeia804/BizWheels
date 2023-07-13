@@ -13,10 +13,9 @@ async function checkCarAvailability(startDate, endDate) {
   }
 }
 
-async function carRequested(carId) {
+async function findCar(carId) {
   try {
 
-    // TODO: Filter cars based on dates, using existing Bookings.
     const carById = await Car.findById(carId);
 
     return carById;
@@ -28,5 +27,5 @@ async function carRequested(carId) {
 
 module.exports = {
   checkCarAvailability,
-  carRequested
+  findCar
 };

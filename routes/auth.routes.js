@@ -58,9 +58,10 @@ router.post("/login", async (req, res, next) => {
         
         // check role and redirect to user / admin-dashboard
         if(loggedUser.role === "admin"){
-          res.render("admin-profile")
+          // TODO: Not changing URL
+          res.render("profiles/admin-profile")
         }else{
-        res.redirect("/profile")
+        res.redirect("profiles/user-profile")
         }
 
       } else {
