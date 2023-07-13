@@ -1,19 +1,10 @@
 const Car = require('../models/Car.model');
 
-async function checkCarAvailability(date, duration) {
+async function checkCarAvailability(startDate, endDate) {
   try {
-    const startDate = new Date(date);
-    const endDate = new Date(startDate.getTime() + duration * 60 * 60 * 1000);
 
-    const availableCars = await Car.find({
-      reservations: {
-        $not: {
-          $elemMatch: {
-            date: { $gte: startDate, $lt: endDate },
-          },
-        },
-      },
-    });
+    // TODO: Filter cars based on dates, using existing Bookings.
+    const availableCars = await Car.find({});
 
     return availableCars;
   } catch (error) {

@@ -10,3 +10,13 @@
   <button type="submit">Check availability</button>
 </form>
 
+<% if (availableCars && availableCars.length > 0) { %>
+  <h3>Available Cars:</h3>
+  <ul>
+    <% availableCars.forEach(function(car) { %>
+      <li><%= car.make %> <%= car.model %></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No cars available for the selected date and time.</p>
+<% } %>
