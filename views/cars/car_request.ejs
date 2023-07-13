@@ -2,7 +2,7 @@
 
 <form action="/cars/request" method="POST">
   <label for="date">Start date:</label>
-  <input type="date" id="startDate" name="startDate" value ="<%=startDate%>"required>
+  <input type="date" id="startDate" name="startDate" value="<%=startDate%>" required>
 
   <label for="date">End date:</label>
   <input type="date" id="endDate" name="endDate" value="<%=endDate%>" required>
@@ -11,12 +11,23 @@
 </form>
 
 <% if (availableCars && availableCars.length > 0) { %>
-  <h3>Available Cars:</h3>
-  <ul>
-    <% availableCars.forEach(function(car) { %>
-      <li><%= car.make %> <%= car.model %></li>
-    <% }) %>
-  </ul>
+<h3>Available Cars:</h3>
+<div class="card-container">
+  <% availableCars.forEach(function(car) { %>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
+      <p class="card-text">Description:
+      <ul>
+        <li><%= car.fuelType %></li>
+        <li><%= car.features %></li>
+      </ul>
+
+      <button class="btn btn-primary">Request </button>
+    </div>
+  </div>
+  <% }) %>
+</div>
 <% } else { %>
-  <p>No cars available for the selected date and time.</p>
+<p>No cars available for the selected date and time.</p>
 <% } %>
