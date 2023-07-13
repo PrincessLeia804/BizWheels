@@ -3,7 +3,6 @@ const { Schema, model } = require("mongoose");
 const bookingSchema = new Schema(
     {
         car: {
-            // TODO check Filipas Model for the right ref
             type: Schema.Types.ObjectId, ref: "Car"
         },
         employee: {
