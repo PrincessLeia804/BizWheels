@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const employeeSchema = new Schema(
+const userSchema = new Schema(
   {
     firstName : {
       type: String,
@@ -19,12 +19,7 @@ const employeeSchema = new Schema(
       lowercase: true,
       trim: true
     },
-    personellNumber: {
-      type: Number,
-      trim: true,
-      unique: true,
-    },
-    password: {
+    passwordHash: {
       type: String,
       required: [true, 'Password is required.']
     },
@@ -36,6 +31,7 @@ const employeeSchema = new Schema(
     },
     company: {
       type: String,
+      default: "LePa"
     }
   },
   {
@@ -43,6 +39,6 @@ const employeeSchema = new Schema(
   }
 );
 
-const EmployeeModel = model("Employee", employeeSchema);
+const UserModel = model("User", userSchema);
 
-module.exports = EmployeeModel;
+module.exports = UserModel;

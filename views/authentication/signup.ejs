@@ -1,0 +1,25 @@
+<div id="sign-up-screen">
+  <h2>Sign-Up</h2>
+  <div>
+    <form action="/auth/signup" method="POST" style="display: flex; flex-direction: column;">
+      <label>
+        First Name
+        <input name="firstName" required>
+      </label>
+      <label>
+        Last Name
+        <input name="lastName" required>
+      </label>
+      <label>
+        E-Mail
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" required>
+      </label>
+  </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</div>
