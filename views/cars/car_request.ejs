@@ -2,10 +2,10 @@
 
 <form action="/cars/request" method="POST">
   <label for="date">Start date:</label>
-  <input type="date" id="startDate" name="startDate" required>
+  <input type="date" id="startDate" name="startDate" value ="<%=startDate%>"required>
 
   <label for="date">End date:</label>
-  <input type="date" id="endDate" name="endDate" required>
+  <input type="date" id="endDate" name="endDate" value="<%=endDate%>" required>
 
   <button type="submit">Check availability</button>
 </form>
