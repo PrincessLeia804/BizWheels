@@ -1,6 +1,9 @@
 // Run node seed/userSeedData.js to initialize the DB with some test cars
-const mongoose = require('mongoose')
-const UserModel = require('../models/User.model')
+const mongoose = require('mongoose');
+const UserModel = require('../models/User.model');
+const bcrypt = require('bcryptjs');
+
+const salt = bcrypt.genSaltSync(13);
 
 const userSeedData = [
     {
@@ -8,20 +11,20 @@ const userSeedData = [
         lastName: 'Santos',
         email: 'filipa.santos@lepa.com',
         role: 'admin',
-        passwordHash: '1234'
+        passwordHash: bcrypt.hashSync('1234', salt),
     },
     {
         firstName: 'Lea',
         lastName: 'Model',
         email: 'lea.model@lepa.com',
         role: 'admin',
-        passwordHash: '1234'
+        passwordHash: bcrypt.hashSync('1234', salt),
     },
     {
         firstName: 'Jane',
         lastName: 'Doe',
         email: 'jane.doe@lepa.com',
-        passwordHash: '1234'
+        passwordHash: bcrypt.hashSync('1234', salt),
     }
 ]
 
