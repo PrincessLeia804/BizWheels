@@ -21,15 +21,21 @@ app.set('view engine', 'ejs')
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
+// add custom middleware
+const {isLoggedIn, isAdmin} = require("./middleware/route-guard")
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const carsRouter = require('./routes/cars.route');
-app.use("/cars", carsRouter);
+app.use("/cars", isLoggedIn, carsRouter);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
+
+const profileRoutes = require("./routes/profile.routes");
+app.use("/profile", isLoggedIn, profileRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
