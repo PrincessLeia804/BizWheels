@@ -1,1 +1,10 @@
-<h1>Welcome to your Dashboard, <%- username %>></h1>
+<% if (userInSession) { %>
+    <nav>
+        <form action="/auth/logout" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+    <h1>Welcome to your Dashboard, <%- userInSession.firstName %>></h1>
+<% } else { %>
+    <p>You are currently logged out</p>
+<% } %>
