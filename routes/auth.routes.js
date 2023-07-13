@@ -10,7 +10,6 @@ router.get("/signup", (req, res, next) => {
 // POST sign-up form
 router.post("/signup", async (req, res, next) => {
   const payload = {...req.body}
-  console.log('payload: ', payload);
 
   // delete and encrypt password
   delete payload.password
@@ -19,6 +18,7 @@ router.post("/signup", async (req, res, next) => {
   payload.passwordHash = await bcrypt.hashSync(req.body.password, salt)
 
   try {
+    // create new user in the DB
     const newSignup = await UserModel.create(payload)
     res.render("user-profile", {username : newSignup.firstName})
   } catch (error) {
