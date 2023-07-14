@@ -53,7 +53,7 @@ router.post("/my-account/update", async (req, res) => {
     }
   }
   
-/* Update db entry */
+  // Update db entry
   try {
     const userData = await UserModel.findByIdAndUpdate(
       {_id: req.session.user._id}, 
