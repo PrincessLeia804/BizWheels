@@ -58,7 +58,7 @@ router.get("/fleet/update/:id", async (req, res) => {
 
 
 /* DELETE CAR */
-router.get("/admin/fleet/delete", async (req, res, next) => {
+router.get("/fleet/delete/:id", async (req, res, next) => {
   try {
     const car = await Car.findByIdAndDelete({_id: req.params.id})
     res.redirect("/admin/fleet")
