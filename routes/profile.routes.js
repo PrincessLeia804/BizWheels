@@ -67,5 +67,15 @@ router.post("/my-account/update", async (req, res) => {
 })
 
 
+/* DELETE PROFILE */
+router.get("/my-account/delete", async (req, res, next) => {
+  try {
+    const userData = await UserModel.findByIdAndDelete({_id: req.session.user._id})
+    res.redirect("/")
+  } catch (error) {
+    console.log("Account could not be deleted");
+  }
+})
+
 
   module.exports = router;
