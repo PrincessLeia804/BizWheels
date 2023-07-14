@@ -1,4 +1,21 @@
-<nav>
+<div>
+  <h1>Welcome to your Dashboard, <%- userInSession.firstName %></h1>
+  <div class="card-container">
+    <!-- Cars Mangement -->
+    <a href="/admin/fleet" class="linked-cards">
+      <div class="card card-body">
+        <h3>Car Management</h3>
+      </div>
+    </a>
+
+    <!-- User Management -->
+    <a href="" class="linked-cards">
+      <div class="card card-body">
+        <h3>User Management</h3>
+      </div>
+    </a>
+  </div>
+
+  <div>
     <a href="/auth/logout"><button>Logout</button></a>
-  </nav>
-<h1>Welcome to the admin dashboard</h1>
+  </div>

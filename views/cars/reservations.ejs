@@ -13,9 +13,8 @@
         <% reservations.forEach(reservation => { %>
          <div class="card card-body">
             <p>
-                <%- reservation.startDate %>
-                <%- reservation.endDate %>
-
+                <%- reservation.start %> -<br>
+                <%- reservation.end %>
             </p>
          </div>
         <% }) %>

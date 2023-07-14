@@ -4,7 +4,7 @@ const {
   getAllCars,
   findCar,  
 } = require("../controllers/carController");
-const { createBooking, checkExistingBookings } = require("../controllers/bookingController");
+const { createBooking, checkExistingBookings, convertISOToDate } = require("../controllers/bookingController");
 const { isLoggedIn } = require("../middleware/route-guard");
 const Car = require("../models/Car.model");
 const BookingModel = require("../models/Booking.model");
@@ -68,13 +68,15 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
 /* RESERVATIONS */
 router.get("/reservations", async(req, res, next) => {
   const employee = req.session.user._id
-  console.log('employee: ', employee);
-
   
   try {
     const bookings = await BookingModel.find({ employeeId: employee})
-    console.log('bookings: ', bookings);
-    res.render("cars/reservations", {reservations : bookings})
+
+    const bookingDates = bookings.map(booking => {
+      let travel = {start : convertISOToDate(booking.startDate), end : convertISOToDate(booking.endDate)}
+      return travel
+    })
+    res.render("cars/reservations", {reservations : bookingDates})
   } catch (error) {
     console.log("Bookings couldn't be found");
   }

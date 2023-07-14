@@ -12,6 +12,11 @@ const bookingSchema = new Schema(
       ref: "Employee",
       required: true,
     },
+    status: {
+      // TODO: limit to 2 options (reserved / returned) and add status changes 
+      type: String,
+      default: "reserved"
+    },
     startDate: {
       type: Date,
       required: true,
