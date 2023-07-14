@@ -1,20 +1,35 @@
+<nav>
+  <a href="/profile">Dashboard</a>
+  <a href="/cars/request">Rent a car</a>
+  <a href="">My Reservations</a>
+  <a href="/auth/logout">Logout</a>
+</nav>
+
 <h2>My Account</h2>
 
 <div class="card-container card card-body">
-    <p>First Name: <%- user.firstName %></p>
+  <p>First Name: <%- user.firstName %></p>
 </div>
 <div class="card-container card card-body">
-    <p>Last Name: <%- user.lastName %></p>
+  <p>Last Name: <%- user.lastName %></p>
 </div>
 <div class="card-container card card-body">
-    <p>E-Mail: <%- user.email %></p>
+  <p>E-Mail: <%- user.email %></p>
 </div>
 <div class="card-container card card-body">
-    <p>Company: <%- user.company %></p>
+  <p>Company: <%- user.company %></p>
 </div>
 
+
 <div class="card-container card card-body">
-    <a href="/my-account/update">
-        <button>Change my Details</button>
+  <div>
+    <a href="/profile/my-account/update">
+      <button>Change my Details</button>
     </a>
+  </div>
+  <div>
+    <a href="/profile">
+      <button>Go back</button>
+    </a>
+  </div>
 </div>

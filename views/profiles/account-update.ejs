@@ -1,0 +1,52 @@
+<h2>Update your information</h2>
+
+<!-- Form -->
+<div class="card-container card card-body">
+  <form action="/profile/my-account/update" method="POST">
+    <label>First Name:
+      <input name="firstName" value="<%- user.firstName %>" />
+    </label>
+</div>
+<div class="card-container card card-body">
+  <form>
+    <label>Last Name:
+      <input name="lastName" value="<%- user.lastName %>" />
+    </label>
+</div>
+<div class="card-container card card-body">
+  <form>
+    <label>E-Mail:
+      <input name="email" value="<%- user.email %>" />
+    </label>
+</div>
+<div class="card-container card card-body">
+  <form>
+    <label>Company:
+      <input name="company" value="<%- user.company %>" />
+    </label>
+</div>
+<div class="card-container card card-body">
+  <form>
+    <label>Current password:
+      <input name="password" type="password" />
+    </label>
+    <label>New password:
+      <input name="passwordHash" type="password" />
+    </label>
+</div>
+
+<!-- Buttons -->
+<div class="card-container card card-body">
+  <div>
+    <a href="/profile/my-account/update">
+      <button type="submit">Save changes</button>
+    </a>
+  </div>
+  </form>
+    <div>
+        <a href="/profile/my-account">
+          <button>Back to my Account</button>
+        </a>
+    </div>
+  </div>
+</div>
