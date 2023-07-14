@@ -6,6 +6,8 @@ const {
 } = require("../controllers/carController");
 const { createBooking, checkExistingBookings } = require("../controllers/bookingController");
 const { isLoggedIn } = require("../middleware/route-guard");
+const Car = require("../models/Car.model");
+const BookingModel = require("../models/Booking.model");
 
 async function getAvailableCars(today, tomorrow) {
   const availableCars = await getAllCars();
@@ -60,6 +62,22 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
     res.status(500).send("Error creating the booking: " + error.message);
   }
 });
+
+
+/* RESERVATIONS */
+router.get("/reservations", async(req, res, next) => {
+  const employee = req.session.user._id
+  console.log('employee: ', employee);
+
+  
+  try {
+    const bookings = await BookingModel.find({ employeeId: employee})
+    console.log('bookings: ', bookings);
+    res.render("cars/reservations", {reservations : bookings})
+  } catch (error) {
+    console.log("Bookings couldn't be found");
+  }
+})
 
 module.exports = router;
 

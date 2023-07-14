@@ -1,0 +1,26 @@
+<nav>
+  <a href="/profile">Dashboard</a>
+  <a href="/profile/my-account">My Account</a>
+  <a href="/cars/request">Rent a car</a>
+  <a href="/auth/logout">Logout</a>
+</nav>
+<h2>My Reservations</h2>
+
+<!-- TODO: Add condition to separate previous/upcoming reservations -->
+<h3>Upcoming Reservations</h3>
+<div class="card-container">
+    <% if (reservations) { %>
+        <% reservations.forEach(reservation => { %>
+         <div class="card card-body">
+            <p>
+                <%- reservation.startDate %>
+                <%- reservation.endDate %>
+
+            </p>
+         </div>
+        <% }) %>
+    <% } %>
+</div>
+
+<h3>Previous Reservations</h3>
+
