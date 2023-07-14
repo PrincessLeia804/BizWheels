@@ -9,6 +9,7 @@ const { isLoggedIn } = require("../middleware/route-guard");
 const Car = require("../models/Car.model");
 const BookingModel = require("../models/Booking.model");
 
+
 async function getAvailableCars(today, tomorrow) {
   const availableCars = await getAllCars();
   const existingBookings = await checkExistingBookings(today, tomorrow);
@@ -78,6 +79,7 @@ router.get("/reservations", async(req, res, next) => {
     console.log("Bookings couldn't be found");
   }
 })
+
 
 module.exports = router;
 
