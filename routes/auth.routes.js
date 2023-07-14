@@ -22,11 +22,6 @@ router.post("/signup", async (req, res, next) => {
   try {
     // create new user in the DB
     const newSignup = await UserModel.create(payload)
-
-    // create admin
-    if(newSignup.email === "admin@bw.com"){
-      await UserModel.findByIdAndUpdate(newSignup.id, {role: "admin"})
-    }
     req.session.user = newSignup
     res.redirect("/profile")
   } catch (error) {
@@ -58,8 +53,7 @@ router.post("/login", async (req, res, next) => {
         
         // check role and redirect to user / admin-dashboard
         if(loggedUser.role === "admin"){
-          // TODO: Not changing URL
-          res.render("profiles/admin-profile")
+          res.redirect("/admin/")
         }else{
         res.redirect("/profile")
         }
