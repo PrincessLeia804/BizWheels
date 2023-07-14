@@ -1,9 +1,8 @@
 const Car = require('../models/Car.model');
 
-async function checkCarAvailability(startDate, endDate) {
+async function getAllCars() {
   try {
 
-    // TODO: Filter cars based on dates, using existing Bookings.
     const availableCars = await Car.find({});
 
     return availableCars;
@@ -26,6 +25,6 @@ async function findCar(carId) {
 }
 
 module.exports = {
-  checkCarAvailability,
+  getAllCars,
   findCar
 };

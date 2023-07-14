@@ -1,11 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const {
-  checkCarAvailability,
-  findCar,
+  getAllCars,
+  findCar,  
 } = require("../controllers/carController");
-const { createBooking } = require("../controllers/bookingController");
+const { createBooking, checkExistingBookings } = require("../controllers/bookingController");
 const { isLoggedIn } = require("../middleware/route-guard");
+
+async function getAvailableCars(today, tomorrow) {
+  const availableCars = await getAllCars();
+  const existingBookings = await checkExistingBookings(today, tomorrow);
+  const updatedAvailableCars = availableCars.filter(car => !existingBookings.some(bookedCar => bookedCar.carId.equals(car.id)));
+  return updatedAvailableCars;
+}
 
 router.get("/", (req, res) => {
   res.json("Cars index will be here");
@@ -16,23 +23,23 @@ router.get("/request", isLoggedIn, async (req, res) => {
   const tomorrow = new Date();
   tomorrow.setDate(today.getDate() + 1);
 
-  const availableCars = await checkCarAvailability(today, tomorrow);
+  const availableCars = await getAvailableCars(today, tomorrow);
   
   const startDate = today.toLocaleDateString().split('/').reverse().join('-');
   const endDate = tomorrow.toLocaleDateString().split('/').reverse().join('-');
-  res.render("cars/request", { startDate, endDate, availableCars });
+  res.render("cars/request", { startDate, endDate, availableCars: availableCars });
 });
 
 router.post("/request", isLoggedIn, async (req, res) => {
   const { startDate, endDate } = req.body;
 
   try {
-    const availableCars = await checkCarAvailability(startDate, endDate);
-
+    const availableCars = await getAvailableCars(startDate, endDate);
+    
     res.render("cars/request", { startDate, endDate, availableCars });
   } catch (error) {
-    console.log("Error processing car request:", error);
-    res.status(500).send("Error processing car request");
+    console.log("Error processing date update:", error);
+    res.status(500).send("Error processing date update");
   }
 });
 
@@ -41,11 +48,13 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
   console.log(req.body);
   try {
     const employeeId = req.session.user._id;
-    const booking = await createBooking(carId, employeeId, startDate, endDate);
-    
+    const booking = await createBooking(carId, employeeId, startDate, endDate);  
     console.log(booking);
+    
     const car = await findCar(carId);
-    res.render("cars/confirmation", { startDate, endDate, car });
+    console.log(car)
+
+    res.render("cars/confirmation", { startDate, endDate, car});
   } catch (error) {
     console.log("Error creating the booking:", error);
     res.status(500).send("Error creating the booking: " + error.message);
@@ -53,3 +62,5 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
 });
 
 module.exports = router;
+
+

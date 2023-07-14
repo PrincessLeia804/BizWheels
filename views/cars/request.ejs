@@ -1,6 +1,6 @@
 <h2>Car Request Form</h2>
 
-<form action="/cars/request" method="POST">
+<form action="/cars/request" method="POST" onsubmit="return validateDates()">
   <label for="date">Start date:</label>
   <input type="date" id="startDate" name="startDate" value="<%=startDate%>" required>
 
@@ -9,6 +9,16 @@
 
   <button type="submit">Check availability</button>
 </form>
+
+<div class="filter-container">
+  <label for="filter">Filter by:</label>
+  <select id="filter" name="filter">
+    <option value="option1">Make</option>
+    <option value="option2">Automatic</option>
+    <option value="option3">fuelType</option>
+  </select>
+  <button id="filterButton" class="btn btn-primary">Filter</button>
+</div>
 
 <% if (availableCars && availableCars.length > 0) { %>
 <h3>Available Cars:</h3>
@@ -36,3 +46,26 @@
 <% } else { %>
 <p>No cars available for the selected date and time.</p>
 <% } %>
+
+<script>
+  function validateDates() {
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+
+    const startDate = new Date(startDateInput.value);
+    const endDate = new Date(endDateInput.value);
+    const currentDate = new Date().setHours(0,0,0);
+
+    if (startDate < currentDate || endDate <= currentDate){
+      alert('Dates must be today or in the future');
+      return false;
+    }
+
+    if (startDate >= endDate) {
+      alert('End date must be after start date');
+      return false;
+    }
+
+    return true;
+  }
+</script>
