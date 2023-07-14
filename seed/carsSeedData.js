@@ -16,6 +16,7 @@ const seedData = [
     isAutomatic: true,
     carType: "Sedan",
     registration: "B-MH-1234",
+    imageUrl: "/images/ToyotaCarmy.png",
   },
   {
     make: "Honda",
@@ -29,12 +30,13 @@ const seedData = [
     isAutomatic: true,
     carType: "Sedan",
     registration: "K-AB-5678",
+    imageUrl: "/images/HondaCivic.png",
   },
   {
     make: "Ford",
     model: "Mustang",
     year: 2022,
-    color: "Yellow",
+    color: "Black",
     mileage: 5000,
     features: ["Leather Seats", "Navigation System"],
     fuelType: "Gasoline",
@@ -42,6 +44,7 @@ const seedData = [
     isAutomatic: false,
     carType: "Sports Car",
     registration: "F-XY-9876",
+    imageUrl: "/images/FordMustang.png",
   },
   {
     make: "Tesla",
@@ -55,6 +58,7 @@ const seedData = [
     isAutomatic: true,
     carType: "Sedan",
     registration: "M-HG-4321",
+    imageUrl: "/images/TeslaModelSBlack.png",
   },
   {
     make: "Nissan",
@@ -68,6 +72,7 @@ const seedData = [
     isAutomatic: true,
     carType: "Hatchback",
     registration: "AC-DF-2468",
+    imageUrl: "/images/NissanLeafWhite.png",
   },
   {
     make: "Chevrolet",
@@ -81,12 +86,13 @@ const seedData = [
     isAutomatic: true,
     carType: "Hatchback",
     registration: "BN-QW-1357",
+    imageUrl: "/images/ChevroletBoltEV.png",
   },
   {
     make: "Volkswagen",
     model: "Golf",
     year: 2021,
-    color: "Silver",
+    color: "White",
     mileage: 15000,
     features: ["LED Headlights", "Touchscreen Infotainment"],
     fuelType: "Diesel",
@@ -94,6 +100,7 @@ const seedData = [
     isAutomatic: true,
     carType: "Hatchback",
     registration: "R-JK-7890",
+    imageUrl: "/images/VolkswagenGolfWhite.png",
   },
   {
     make: "BMW",
@@ -107,6 +114,7 @@ const seedData = [
     isAutomatic: true,
     carType: "SUV",
     registration: "L-NP-2468",
+    imageUrl:"/images/BMWX5.png",
   },
   {
     make: "Mercedes-Benz",
@@ -120,7 +128,37 @@ const seedData = [
     isAutomatic: true,
     carType: "Sedan",
     registration: "E-PO-9753",
+    imageUrl: "/images/Mercedes-BenzE-Class.png",
   },
+  {
+    make: "Tesla",
+    model: "Model Y",
+    year: 2021,
+    color: "Red",
+    mileage: 5000,
+    features: ["Autopilot", "Panoramic Roof"],
+    fuelType: "Electric",
+    numberOfSeats: 5,
+    isAutomatic: true,
+    carType: "SUV",
+    registration: "TSLA-MY-1234",
+    imageUrl: "/images/TeslaModelYRed.png",
+  },
+  {
+    make: "Toyota",
+    model: "Prius",
+    year: 2022,
+    color: "Silver",
+    mileage: 5000,
+    features: ["Hybrid Synergy Drive", "Fuel Efficiency"],
+    fuelType: "Hybrid",
+    numberOfSeats: 5,
+    isAutomatic: true,
+    carType: "Hatchback",
+    registration: "TOY-PRI-7890",
+    imageUrl: "/images/ToyotaPriusSilver.png",
+  }
+  
 ];
 
 async function seedDatabase() {
