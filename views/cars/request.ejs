@@ -7,7 +7,7 @@
   <label for="date">End date:</label>
   <input type="date" id="endDate" name="endDate" value="<%=endDate%>" required>
 
-  <button type="submit" >Check availability</button>
+  <button type="submit">Check availability</button>
 </form>
 
 <% if (availableCars && availableCars.length > 0) { %>
@@ -54,6 +54,7 @@
   <div class="card">
     <form method="POST" action="/cars/submit-request">
       <div class="card-body">
+        <img src="<%= car.imageUrl ? car.imageUrl : "/images/defaultcar.png" %>" alt="Car Image" class="car-image">
         <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
         <p class="card-text">Description:
         <ul>
