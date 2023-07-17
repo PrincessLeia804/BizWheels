@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 const { getAllCars, findCar } = require("../controllers/carController");
 const Car = require("../models/Car.model");
@@ -113,9 +114,59 @@ router.get("/fleet/delete/:id", async (req, res, next) => {
 router.get("/users", async (req, res) => {
   try {
     const allUsers = await User.find();
-    res.render("profiles/user-base", { users: allUsers });
+    res.render("profiles/userBase", { users: allUsers });
   } catch (error) {
     console.log(error);
+  }
+});
+
+/* DELETE USER */
+router.get("/users/delete/:id", async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndDelete({ _id: req.params.id });
+    console.log(user);
+    res.redirect("/admin/users");
+  } catch (error) {
+    console.log("User could not be deleted");
+  }
+});
+
+// Update USER DETAILS
+
+router.get("/users/update/:id", async (req, res) => {
+  try {
+    const userData = await User.findById({ _id: req.params.id });
+    console.log(userData);
+    res.render("profiles/admin-account-update", { user: userData });
+  } catch (error) {
+    console.log("Data couldn't be displayed: " + error.message);
+  }
+});
+
+router.post("/users/update/:id", async (req, res) => {
+  try {
+    const profileUpdate = req.body;
+
+    if (profileUpdate.newPassword) {
+      const salt = bcrypt.genSaltSync(13);
+
+      profileUpdate.passwordHash = bcrypt.hashSync(
+        profileUpdate.newPassword,
+        salt
+      );
+      delete profileUpdate.newPassword;
+    }
+
+    console.log(profileUpdate);
+    const userData = await User.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: profileUpdate },
+      { new: true }
+    );
+    console.log("User Profile updated: " + userData);
+    res.redirect("/admin/users");
+  } catch (error) {
+    console.log("Failed to update user: " + error.message);
   }
 });
 
