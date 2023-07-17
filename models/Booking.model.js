@@ -25,6 +25,12 @@ const bookingSchema = new Schema(
       type: Date,
       required: true,
     },
+    destination: {
+      type: String,
+    },
+    occasion: {
+      type: String,
+    },
     pickUpLocation: {
       type: String,
     },

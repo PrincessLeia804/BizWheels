@@ -1,10 +1,11 @@
 const express = require("express");
+const moment = require("moment");
 const router = express.Router();
 const {
   getAllCars,
   findCar,  
 } = require("../controllers/carController");
-const { createBooking, checkExistingBookings, convertISOToDate } = require("../controllers/bookingController");
+const { createBooking, checkExistingBookings } = require("../controllers/bookingController");
 const { isLoggedIn } = require("../middleware/route-guard");
 const Car = require("../models/Car.model");
 const BookingModel = require("../models/Booking.model");
@@ -72,13 +73,35 @@ router.get("/reservations", async(req, res, next) => {
   try {
     const bookings = await BookingModel.find({ employeeId: employee})
 
-    const bookingDates = bookings.map(booking => {
-      let travel = {start : convertISOToDate(booking.startDate), end : convertISOToDate(booking.endDate)}
-      return travel
+    
+    // sort into previous and upcoming bookings
+    const today = new Date();
+    const prevBookings = []
+    const activeBookings = []
+    
+    bookings.forEach(booking => {
+      if(booking.endDate >= today){
+        activeBookings.push(booking)
+      } else {
+        prevBookings.push(booking)
+      }
     })
-    res.render("cars/reservations", {reservations : bookingDates})
+
+    res.render("cars/reservations", {activeBookings, prevBookings, moment})
   } catch (error) {
     console.log("Bookings couldn't be found");
+  }
+})
+
+
+/* CANCEL RESERVATION */
+router.get("/reservations/delete/:id", async (req, res, next) => {
+  console.log(req.params);
+  try {
+    const bookingData = await BookingModel.findByIdAndDelete({_id: req.params.id})
+    res.redirect("/cars/reservations")
+  } catch (error) {
+    console.log("Booking could not be cancelled");
   }
 })
 
