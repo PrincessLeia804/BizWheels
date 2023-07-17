@@ -2,19 +2,20 @@ const express = require("express");
 const bcrypt = require('bcryptjs');
 const router = express.Router();
 const { getAllCars, findCar } = require("../controllers/carController");
+const bookingController = require("../controllers/bookingController");
 const Car = require("../models/Car.model");
 const User = require("../models/User.model");
 
 /* DASHBOARD */
 router.get("/", async (req, res) => {
-  res.render("profiles/admin-profile", { userInSession: req.session.user });
+  res.render("admin/dashboard", { userInSession: req.session.user });
 });
 
 /* CAR MANAGEMENT */
 router.get("/fleet", async (req, res) => {
   try {
     const fleet = await getAllCars();
-    res.render("cars/fleet", { fleet: fleet });
+    res.render("admin/fleet", { fleet: fleet });
   } catch (err) {
     console.log(err);
   }
@@ -26,7 +27,7 @@ router.get("/fleet/update/:id", async (req, res) => {
 
   try {
     const car = await Car.findById(carUpdate);
-    res.render("cars/car-update", { car: car });
+    res.render("admin/car-edit", { car: car });
   } catch (err) {
     console.log(err);
   }
@@ -53,7 +54,7 @@ router.post("/fleet/update/:id", async (req, res) => {
 /* ADD NEW CARS */
 
 router.get("/fleet/add", async (req, res) => {
-  res.render("cars/fleet-extension");
+  res.render("admin/car-create");
 });
 
 router.post("/fleet/add", async (req, res) => {
@@ -114,7 +115,7 @@ router.get("/fleet/delete/:id", async (req, res, next) => {
 router.get("/users", async (req, res) => {
   try {
     const allUsers = await User.find();
-    res.render("profiles/userBase", { users: allUsers });
+    res.render("admin/users", { users: allUsers });
   } catch (error) {
     console.log(error);
   }
@@ -137,7 +138,7 @@ router.get("/users/update/:id", async (req, res) => {
   try {
     const userData = await User.findById({ _id: req.params.id });
     console.log(userData);
-    res.render("profiles/admin-account-update", { user: userData });
+    res.render("admin/user-edit", { user: userData });
   } catch (error) {
     console.log("Data couldn't be displayed: " + error.message);
   }
@@ -169,5 +170,19 @@ router.post("/users/update/:id", async (req, res) => {
     console.log("Failed to update user: " + error.message);
   }
 });
+
+router.get("/users/bookings/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    const user = await bookingController.getPopulatedUserBookings(userId);
+    console.log(user);
+    res.render("admin/user-bookings", { user });
+  } catch (error) {
+    console.log("Error fetching user bookings:", error);
+    res.status(500).send("Error fetching user bookings");
+  }
+});
+
 
 module.exports = router;
