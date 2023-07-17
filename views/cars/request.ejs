@@ -10,37 +10,66 @@
   <button type="submit">Check availability</button>
 </form>
 
+<% if (availableCars && availableCars.length > 0) { %>
 <div class="filter-container">
-  <label for="filter">Filter by:</label>
-  <select id="filter" name="filter">
-    <option value="option1">Make</option>
-    <option value="option2">Automatic</option>
-    <option value="option3">fuelType</option>
-  </select>
-  <button id="filterButton" class="btn btn-primary">Filter</button>
+  <label for="filter">Filters:</label>
+  <div id="filter">
+    <select id="makeFilter" name="makefilter" onchange="filterCars()">
+      <optgroup label="Make">
+        <option value="make">Make</option>
+      <optgroup label="Make Options" id="makeOptions">
+        <% const uniqueMakes = [...new Set(availableCars.map(car => car.make))]; %>
+        <% uniqueMakes.forEach(function(make) { %>
+        <option value="<%= make.toLowerCase() %>"><%= make %></option>
+        <% }) %>
+      </optgroup>
+      </optgroup>
+    </select>
+    <select id="fuelFilter" name="fuelfilter" onchange="filterCars()">
+      <optgroup label="Fuel">
+        <option value="fuel">Fuel</option>
+      <optgroup label="Fuel Options" id="fuelOptions">
+        <% const uniqueFuel = [...new Set(availableCars.map(car => car.fuelType))]; %>
+        <% uniqueFuel.forEach(function(fuelType) { %>
+        <option value="<%= fuelType.toLowerCase() %>"><%= fuelType %></option>
+        <% }) %>
+      </optgroup>
+      </optgroup>
+    </select>
+    <select id="transmissionFilter" name="transmissionlfilter" onchange="filterCars()">
+      <optgroup label="Transmission">
+        <option value="transmission">Transmission</option>
+      <optgroup label="Transmission Options" id="transmissionOptions">
+        <option value="manual">Manual</option>
+        <option value="automatic">Automatic</option>
+      </optgroup>
+      </optgroup>
+    </select>
+  </div>
 </div>
 
-<% if (availableCars && availableCars.length > 0) { %>
 <h3>Available Cars:</h3>
 <div class="card-container">
   <% availableCars.forEach(function(car) { %>
-  <form method="POST" action="/cars/submit-request">
-    <div class="card">
+  <div class="card">
+    <form method="POST" action="/cars/submit-request">
       <div class="card-body">
+        <img src="<%= car.imageUrl ? car.imageUrl : "/images/defaultcar.png" %>" alt="Car Image" class="car-image">
         <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
         <p class="card-text">Description:
         <ul>
-          <li><%= car.fuelType %></li>
+          <li class="fuelType"><%= car.fuelType %></li>
           <li><%= car.features %></li>
           <li><%= car.registration %></li>
+          <li class="transmission"><%= car.isAutomatic ? "Automatic" : "Manual" %></li>
         </ul>
         <input type="hidden" name="carId" value="<%= car.id %>">
         <input type="hidden" name="startDate" value="<%= startDate %>">
         <input type="hidden" name="endDate" value="<%= endDate %>">
         <button class="btn btn-primary">Request </button>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
   <% }) %>
 </div>
 <% } else { %>
@@ -54,9 +83,9 @@
 
     const startDate = new Date(startDateInput.value);
     const endDate = new Date(endDateInput.value);
-    const currentDate = new Date().setHours(0,0,0);
+    const currentDate = new Date().setHours(0, 0, 0);
 
-    if (startDate < currentDate || endDate <= currentDate){
+    if (startDate < currentDate || endDate <= currentDate) {
       alert('Dates must be today or in the future');
       return false;
     }
@@ -67,5 +96,46 @@
     }
 
     return true;
+  }
+
+  function filterCars() {
+    const selectedMake = document.getElementById('makeFilter').value;
+    const selectedFuel = document.getElementById('fuelFilter').value;
+    const selectedTransmission = document.getElementById('transmissionFilter').value;
+
+    // Show all cars initially
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.style.display = 'block';
+    });
+
+    if (selectedMake !== 'make') {
+      cards.forEach(card => {
+        const carMake = card.querySelector('.card-title').textContent.split(' ')[0].toLowerCase();
+        if (carMake !== selectedMake) {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    if (selectedFuel !== 'fuel') {
+      cards.forEach(card => {
+        const carFuel = card.querySelector('.fuelType').textContent.toLowerCase();
+        if (carFuel !== selectedFuel) {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    if (selectedTransmission !== 'transmission') {
+      cards.forEach(card => {
+        const carTransmission = card.querySelector('.transmission').textContent.toLowerCase();
+        if (carTransmission !== selectedTransmission) {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    return false; // Prevent form submission
   }
 </script>

@@ -93,6 +93,7 @@ router.get("/reservations", async(req, res, next) => {
   }
 })
 
+
 /* CANCEL RESERVATION */
 router.get("/reservations/delete/:id", async (req, res, next) => {
   console.log(req.params);
@@ -103,6 +104,7 @@ router.get("/reservations/delete/:id", async (req, res, next) => {
     console.log("Booking could not be cancelled");
   }
 })
+
 
 module.exports = router;
 

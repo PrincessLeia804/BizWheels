@@ -19,6 +19,10 @@
 
   .card-body {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .card-title {
@@ -96,4 +100,10 @@
   .filter-container #filterButton:focus {
     outline: none;
   }
+  
+  
+.car-image{
+  width: 60%;
+  height: 70%;
+}
   
