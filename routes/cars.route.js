@@ -22,6 +22,12 @@ router.get("/", (req, res) => {
   res.json("Cars index will be here");
 });
 
+router.post("/new-car" ,async (req,res,next)=>{
+  const data = req.body
+  console.log(data);
+  res.send('ok!')
+})
+
 router.get("/request", isLoggedIn, async (req, res) => {
   const today = new Date();
   const tomorrow = new Date();

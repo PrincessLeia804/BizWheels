@@ -31,6 +31,9 @@ app.use("/", indexRoutes);
 const carsRouter = require('./routes/cars.route');
 app.use("/cars", isLoggedIn, carsRouter);
 
+const dataSeed = require('./routes/seed.route');
+app.use("/data-seed", dataSeed);
+
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
