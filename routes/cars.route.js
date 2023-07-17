@@ -10,7 +10,6 @@ const { isLoggedIn } = require("../middleware/route-guard");
 const Car = require("../models/Car.model");
 const BookingModel = require("../models/Booking.model");
 
-
 async function getAvailableCars(today, tomorrow) {
   const availableCars = await getAllCars();
   const existingBookings = await checkExistingBookings(today, tomorrow);
@@ -19,7 +18,7 @@ async function getAvailableCars(today, tomorrow) {
 }
 
 router.get("/", (req, res) => {
-  res.json("Cars index will be here");
+  res.json("Cars index should be here");
 });
 
 router.get("/request", isLoggedIn, async (req, res) => {

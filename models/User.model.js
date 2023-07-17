@@ -2,26 +2,26 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    firstName : {
+    firstName: {
       type: String,
       trim: true,
-      required: true
+      required: true,
     },
-      lastName : {
+    lastName: {
       type: String,
       trim: true,
-      required: true
+      required: true,
     },
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: [true, "Email is required."],
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
     },
     passwordHash: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, "Password is required."],
     },
     role: {
       type: String,
@@ -31,11 +31,11 @@ const userSchema = new Schema(
     },
     company: {
       type: String,
-      default: "LePa"
-    }
+      default: "LePa",
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

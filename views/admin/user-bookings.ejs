@@ -1,0 +1,18 @@
+<h2>User Bookings</h2>
+
+<h3>User Details</h3>
+<p>Name: <%= user.firstName %> <%= user.lastName %></p>
+<p>Email: <%= user.email %></p>
+
+<h3>Bookings</h3>
+<% if (user.bookings.length > 0) { %>
+<ul>
+  <% user.bookings.forEach(function(booking) { %>
+  <li>Booking ID: <%= booking._id %></li>
+  <li><%= booking.startDate.toISOString().slice(0,10) %> to <%= booking.endDate.toISOString().slice(0,10) %></li>
+  <li>Car: <%= booking.car.make %> <%= booking.car.model %> (<%= booking.car.registration %>)</li>
+  <% }) %>
+</ul>
+<% } else { %>
+<p>No bookings found for this user.</p>
+<% } %>

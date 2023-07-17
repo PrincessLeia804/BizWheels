@@ -5,9 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Role
-        <th>Booking History</th>
-      </th>
+      <th>Role</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -17,8 +15,8 @@
       <td><%= user.firstName%> <%= user.lastName%></td>
       <td><%= user.email %></td>
       <td><%= user.role %></td>
-      
       <td>
+        <a href="/admin/users/bookings/<%= user.id %>">Bookings</a>
         <a href="/admin/users/update/<%= user.id %>">Edit</a>
         <a href="/admin/users/delete/<%= user.id %>">Delete</a>
       </td>
