@@ -9,17 +9,41 @@
 <!-- TODO: Add condition to separate previous/upcoming reservations -->
 <h3>Upcoming Reservations</h3>
 <div class="card-container">
-    <% if (reservations) { %>
-        <% reservations.forEach(reservation => { %>
-         <div class="card card-body">
-            <p>
-                <%- reservation.start %> -<br>
-                <%- reservation.end %>
-            </p>
-         </div>
-        <% }) %>
-    <% } %>
+  <% if (activeBookings) { %>
+  <% activeBookings.forEach(reservation => { %>
+  <div class="card card-body">
+    <h4>Active</h4>
+    <p>
+      <%= moment(reservation.startDate).format('LL') %> -
+      <%= moment(reservation.endDate).format('LL') %>
+    </p>
+    <% if (reservation) { %>
+    <h5><%- reservation.occasion %> <h5>
+        <h5><%- reservation.destination %> <h5>
+            <% } %>
+
+            <a href="/profile/my-account/update">
+              <button>Add Travel-Details</button>
+            </a>
+            <a href="/cars/reservation/delete/<%- reservation.id%>" onclick="return confirm('Are you sure you want to cancel your reservation?');">
+              <button>Cancel</button>
+            </a>
+  </div>
+  <% }) %>
+  <% } %>
 </div>
 
 <h3>Previous Reservations</h3>
-
+<div class="card-container">
+  <% if (prevBookings) { %>
+  <% prevBookings.forEach(reservation => { %>
+  <div class="card card-body">
+    <h4>Closed</h4>
+    <p>
+      <%= moment(reservation.startDate).format('LL') %> -<br>
+      <%= moment(reservation.endDate).format('LL') %> -<br>
+    </p>
+  </div>
+  <% }) %>
+  <% } %>
+</div>
