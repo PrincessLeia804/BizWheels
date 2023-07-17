@@ -5,8 +5,13 @@
     <a href="/auth/logout">Logout</a>
   </nav>
   
+  <h3>Company Fleet</h3>
+  <a href="/admin/fleet/add">
+    <button>Add new cars to the fleet</button>
+  </a>
+
+
   <% if (fleet) { %>
-    <h3>Company Fleet</h3>
     <div class="card-container">
       <% fleet.forEach(function(car) { %>
         <div class="card">
