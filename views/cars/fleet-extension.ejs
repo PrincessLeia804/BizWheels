@@ -1,5 +1,56 @@
 <h2>Add a new car to the Fleet</h2>
 
-<form action="/admin/fleet/" method="POST">
+<form action="/admin/fleet/add" method="POST">
 
-</form>
+    <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required>
+      
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+      
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required>
+      
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required>
+      
+        <label for="mileage">Mileage:</label>
+        <input type="number" id="mileage" name="mileage" value="0">
+      
+        <label for="features">Features:</label>
+        <input type="text" id="features" name="features">
+      
+        <label for="fuelType">Fuel Type:</label>
+        <select id="fuelType" name="fuelType" required>
+          <option value="Gasoline">Gasoline</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="Other">Other</option>
+        </select>
+      
+        <label for="numberOfSeats">Number of Seats:</label>
+        <input type="number" id="numberOfSeats" name="numberOfSeats" required>
+      
+        <label for="isAutomatic">Automatic Transmission:</label>
+        <input type="checkbox" id="isAutomatic" name="isAutomatic" value="true">
+      
+            
+        <label for="carType">Car Type:</label>
+        <select id="carType" name="carType" required>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Coupe">Coupe</option>
+          <option value="Convertible">Convertible</option>
+          <option value="Sports Car">Sports Car</option>
+        </select>
+      
+        <label for="registration">Registration:</label>
+        <input type="text" id="registration" name="registration" required>
+      
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" id="imageUrl" name="imageUrl">
+      
+        <button type="submit">Add Car</button>
+    </form>
