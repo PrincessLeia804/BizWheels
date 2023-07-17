@@ -5,10 +5,7 @@ const {
   findCar,  
 } = require("../controllers/carController");
 const Car = require("../models/Car.model");
-// const { createBooking, checkExistingBookings, convertISOToDate } = require("../controllers/bookingController");
-// const { isLoggedIn } = require("../middleware/route-guard");
-// const Car = require("../models/Car.model");
-// const BookingModel = require("../models/Booking.model");
+const User = require("../models/User.model");
 
 
 /* DASHBOARD */
@@ -56,6 +53,10 @@ router.get("/fleet/update/:id", async (req, res) => {
   }
 })
 
+/* ADD NEW CARS */
+router.get("/fleet/add", (req, res) => {
+      res.render("cars/fleet-extension");
+});
 
 /* DELETE CAR */
 router.get("/fleet/delete/:id", async (req, res, next) => {
@@ -67,6 +68,16 @@ router.get("/fleet/delete/:id", async (req, res, next) => {
   }
 })
 
+
+/* USER MANAGEMENT */
+router.get("/users", async (req, res) => {
+  try {
+    const allUsers = await User.find()
+    res.render("profiles/user-base", { users: allUsers})
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 
 module.exports = router;
