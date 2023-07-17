@@ -61,8 +61,11 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
     res.render("cars/confirmation", { startDate, endDate, car});
   } catch (error) {
     console.log("Error creating the booking:", error);
-    res.status(500).send("Error creating the booking: " + error.message);
+    const errorMessage = "Error creating the booking: " + error.message;
+    const script = `<script>alert('${errorMessage}'); window.location.href = '/cars/request';</script>`;
+    res.send(script);
   }
+  
 });
 
 
