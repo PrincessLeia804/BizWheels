@@ -10,9 +10,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/new-car", async (req, res, next) => {
-    console.log(req.body);
     req.body.cars.forEach(car => {
-        console.log(car);
         let result = Car.create(car).then(() => {
         }).catch(e => {
             console.log(e);
@@ -20,7 +18,7 @@ router.post("/new-car", async (req, res, next) => {
 
 
     })
-    res.send('did smthn...')
+    res.send('success')
 })
 
 router.post("/new-user", async (req, res, next) => {
@@ -43,7 +41,7 @@ router.post("/new-user", async (req, res, next) => {
 
 
     })
-    res.send('did smthn...')
+    res.send('success')
 })
 
 module.exports = router

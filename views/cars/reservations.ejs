@@ -17,6 +17,7 @@
     <p>
       <%= moment(reservation.startDate).format('LL') %> -
       <%= moment(reservation.endDate).format('LL') %>
+      <img src="<%= .imageUrl ? .imageUrl : "/images/defaultcar.png" %>" alt="Car Image" class="car-image">
     </p>
     <% if (reservation) { %>
     <h5><%- reservation.occasion %> <h5>

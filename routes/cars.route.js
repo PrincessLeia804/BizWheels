@@ -22,12 +22,6 @@ router.get("/", (req, res) => {
   res.json("Cars index will be here");
 });
 
-router.post("/new-car" ,async (req,res,next)=>{
-  const data = req.body
-  console.log(data);
-  res.send('ok!')
-})
-
 router.get("/request", isLoggedIn, async (req, res) => {
   const today = new Date();
   const tomorrow = new Date();
@@ -78,7 +72,7 @@ router.get("/reservations", async(req, res, next) => {
   
   try {
     const bookings = await BookingModel.find({ employeeId: employee})
-
+    
     
     // sort into previous and upcoming bookings
     const today = new Date();
@@ -86,6 +80,15 @@ router.get("/reservations", async(req, res, next) => {
     const activeBookings = []
     
     bookings.forEach(booking => {
+      const carDetails = Car.findById(booking.carId)
+      return carDetails
+      .then((car) => {
+        console.log(car);
+        booking.car = car
+      }).catch(err => {
+        console.log("didnt work");
+      })
+      
       if(booking.endDate >= today){
         activeBookings.push(booking)
       } else {
@@ -93,7 +96,7 @@ router.get("/reservations", async(req, res, next) => {
       }
     })
 
-    res.render("cars/reservations", {activeBookings, prevBookings, moment})
+    res.render("cars/reservations", {activeBookings, prevBookings, moment, carDetails})
   } catch (error) {
     console.log("Bookings couldn't be found");
   }

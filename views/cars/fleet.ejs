@@ -16,6 +16,7 @@
       <% fleet.forEach(function(car) { %>
         <div class="card">
           <div class="card-body">
+            <img src="<%= car.imageUrl ? car.imageUrl : "/images/defaultcar.png" %>" alt="Car Image" class="car-image">
             <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
             <p class="card-text">Description:
             <ul>
