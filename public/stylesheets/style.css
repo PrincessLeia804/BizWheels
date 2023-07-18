@@ -267,33 +267,47 @@ btn {
 
   /* FORMS */
   html,body{
-  /* background-image: url('');
-  background-size: cover;
-  background-repeat: no-repeat; */
   height: 100%;
   }
   
   .forms-container{
+  background-color: rgb(139, 177, 187) ;
   height: 100%;
   align-content: center;
   }
   
   .forms-card{
-  height: 370px;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 400px;
+  width: 100%;
   background-color: rgba(0,0,0,0.5) !important;
   }
   
   .forms-card-header h3{
-  color: white;
-  background-color: rgba(33, 37, 41, 0.03);
+    color: rgb(249, 248, 248);
+    margin: 0;
+    background-color:rgba(139, 176, 187, 0.6);
+    padding: 15px;
+}
+
+.forms-card-body {
+  background-color:rgba(139, 176, 187, 0.4);
 }
 
   .forms-card-footer {
-    color: white;
-    background-color: rgba(33, 37, 41, 0.03);
+    color: rgb(249, 248, 248);
+    background-color:rgba(139, 176, 187, 0.6);
+    padding: 15px;
+  }
+
+  .login-img {
+  background-image: url('../images/LoginPage_cropped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  overflow: hidden;
+  }
+
+  .login-form {
+    background-color: white;
   }
   
   input:focus{
@@ -302,16 +316,15 @@ btn {
   
   }
   
-  .login_btn{
-  color: black;
-  background-color: #FFC312;
-  width: 100px;
+  .login_btn {
+    padding: 20px;
+    width: 30%;
   }
   
-  .login_btn:hover{
+  /* .login_btn:hover{
   color: black;
   background-color: white;
-  }
+  } */
   
   .links{
   color: white;
@@ -320,6 +333,7 @@ btn {
   .links a{
   margin-left: 4px;
   }
+
   .signIn{
     display: flex;
     flex-direction: column;
