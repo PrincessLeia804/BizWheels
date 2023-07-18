@@ -155,3 +155,60 @@ body {
     justify-content: space-between;
   }
 
+
+
+  /* FORMS */
+  html,body{
+  /* background-image: url('');
+  background-size: cover;
+  background-repeat: no-repeat; */
+  height: 100%;
+  }
+  
+  .forms-container{
+  height: 100%;
+  align-content: center;
+  }
+  
+  .forms-card{
+  height: 370px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
+  }
+  
+  .forms-card-header h3{
+  color: white;
+  background-color: rgba(33, 37, 41, 0.03);
+}
+
+  .forms-card-footer {
+    color: white;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+  
+  input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;
+  
+  }
+  
+  .login_btn{
+  color: black;
+  background-color: #FFC312;
+  width: 100px;
+  }
+  
+  .login_btn:hover{
+  color: black;
+  background-color: white;
+  }
+  
+  .links{
+  color: white;
+  }
+  
+  .links a{
+  margin-left: 4px;
+  }
