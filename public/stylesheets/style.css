@@ -271,7 +271,7 @@ btn {
   }
   
   .forms-container{
-  background-color: rgb(139, 177, 187) ;
+  background-color: rgba(139, 177, 187, 0.6) ;
   height: 100%;
   align-content: center;
   }
@@ -284,17 +284,17 @@ btn {
   .forms-card-header h3{
     color: rgb(249, 248, 248);
     margin: 0;
-    background-color:rgba(139, 176, 187, 0.6);
+    background-color:rgb(139, 176, 187);
     padding: 15px;
 }
 
 .forms-card-body {
-  background-color:rgba(139, 176, 187, 0.4);
+  background-color:rgba(139, 176, 187, 0.6);
 }
 
   .forms-card-footer {
     color: rgb(249, 248, 248);
-    background-color:rgba(139, 176, 187, 0.6);
+    background-color:rgb(139, 176, 187);
     padding: 15px;
   }
 
@@ -316,9 +316,9 @@ btn {
   
   }
   
-  .login_btn {
-    padding: 20px;
-    width: 30%;
+  .login-btn {
+    width:50%; 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   }
   
   /* .login_btn:hover{
