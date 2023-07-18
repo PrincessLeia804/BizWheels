@@ -263,6 +263,78 @@ btn {
     justify-content: space-between;
   }
 
+
+
+  /* FORMS */
+  html,body{
+  height: 100%;
+  }
+  
+  .forms-container{
+  background-color: rgba(139, 177, 187, 0.6) ;
+  height: 100%;
+  align-content: center;
+  }
+  
+  .forms-card{
+  width: 100%;
+  background-color: rgba(0,0,0,0.5) !important;
+  }
+  
+  .forms-card-header h3{
+    color: rgb(249, 248, 248);
+    margin: 0;
+    background-color:rgb(139, 176, 187);
+    padding: 15px;
+}
+
+.forms-card-body {
+  background-color:rgba(139, 176, 187, 0.6);
+}
+
+  .forms-card-footer {
+    color: rgb(249, 248, 248);
+    background-color:rgb(139, 176, 187);
+    padding: 15px;
+  }
+
+  .login-img {
+  background-image: url('../images/LoginPage_cropped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding-left: 20px;
+  }
+
+  .login-form {
+    background-color: white;
+  }
+  
+  input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;
+  
+  }
+  
+  .login-btn {
+    width:50%; 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .links{
+  color: white;
+  }
+  
+  .links a{
+  margin-left: 4px;
+  }
+
   .signIn{
     display: flex;
     flex-direction: column;
