@@ -18,7 +18,6 @@ router.get("/", (req, res, next) => {
     }
   })
 
-  // TODO: get route my-account/update and history, connect to reserve cars
 
   /* ACCOUNT UPDATE */
 router.get("/my-account/update", async (req, res) => {

@@ -3,7 +3,7 @@ const moment = require("moment");
 const router = express.Router();
 const {
   getAllCars,
-  findCar,  
+  findCar,
 } = require("../controllers/carController");
 const { createBooking, checkExistingBookings } = require("../controllers/bookingController");
 const { isLoggedIn } = require("../middleware/route-guard");
@@ -27,7 +27,7 @@ router.get("/request", isLoggedIn, async (req, res) => {
   tomorrow.setDate(today.getDate() + 1);
 
   const availableCars = await getAvailableCars(today, tomorrow);
-  
+
   const startDate = today.toLocaleDateString().split('/').reverse().join('-');
   const endDate = tomorrow.toLocaleDateString().split('/').reverse().join('-');
   res.render("cars/request", { startDate, endDate, availableCars: availableCars });
@@ -38,7 +38,7 @@ router.post("/request", isLoggedIn, async (req, res) => {
 
   try {
     const availableCars = await getAvailableCars(startDate, endDate);
-    
+
     res.render("cars/request", { startDate, endDate, availableCars });
   } catch (error) {
     console.log("Error processing date update:", error);
@@ -48,68 +48,105 @@ router.post("/request", isLoggedIn, async (req, res) => {
 
 router.post("/submit-request", isLoggedIn, async function (req, res) {
   const { startDate, endDate, carId } = req.body;
-  console.log(req.body);
+
   try {
     const employeeId = req.session.user._id;
-    const booking = await createBooking(carId, employeeId, startDate, endDate);  
+    const booking = await createBooking(carId, employeeId, startDate, endDate);
     console.log(booking);
-    
+
     const car = await findCar(carId);
     console.log(car)
 
-    res.render("cars/confirmation", { startDate, endDate, car});
+    res.render("cars/confirmation", { startDate, endDate, car });
   } catch (error) {
     console.log("Error creating the booking:", error);
     const errorMessage = "Error creating the booking: " + error.message;
     const script = `<script>alert('${errorMessage}'); window.location.href = '/cars/request';</script>`;
     res.send(script);
   }
-  
+
 });
 
 
 /* RESERVATIONS */
-router.get("/reservations", async(req, res, next) => {
+router.get("/reservations", async (req, res, next) => {
   const employee = req.session.user._id
-  
+
   try {
-    const bookings = await BookingModel.find({ employeeId: employee})
-    
-    
+    const bookings = await BookingModel.find({ employeeId: employee })
+    const carDetails = await Car.find()
+
+
     // sort into previous and upcoming bookings
     const today = new Date();
     const prevBookings = []
     const activeBookings = []
-    
+
     bookings.forEach(booking => {
-      const carDetails = Car.findById(booking.carId)
-      return carDetails
-      .then((car) => {
-        console.log(car);
-        booking.car = car
-      }).catch(err => {
-        console.log("didnt work");
-      })
-      
-      if(booking.endDate >= today){
+      if (booking.endDate >= today) {
         activeBookings.push(booking)
       } else {
         prevBookings.push(booking)
       }
     })
-
-    res.render("cars/reservations", {activeBookings, prevBookings, moment, carDetails})
+    res.render("cars/reservations", { activeBookings, prevBookings, moment, carDetails })
   } catch (error) {
     console.log("Bookings couldn't be found");
   }
 })
 
+/* RESERVATIONS UPDATE */
+router.get("/reservations/update/:id", async (req, res) => {
+  const bookingUpdate = req.params.id;
+
+  try {
+    const booking = await BookingModel.findById(bookingUpdate)
+    console.log('booking: ', booking);
+    res.render("cars/reservation-update", { booking, moment })
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+// UPDATE BOOKING DB
+router.post("/reservations/update/:id", async (req, res) => {
+  const bookingUpdate = req.params.id;
+  const details = req.body;
+
+  // Update Travel dates
+  if (req.body.newStartDate) {
+    req.body.startDate = req.body.newStartDate
+  }
+  
+  if (req.body.newEndDate) {
+    req.body.endDate = req.body.newEndDate
+  }
+  
+  delete req.body.newStartDate
+  delete req.body.newStartDate
+
+
+  try {
+    const booking = await BookingModel.findByIdAndUpdate(
+      { _id: bookingUpdate },
+      { $set: details },
+      { new: true }
+    );
+    console.log('booking: ', booking);
+
+    res.redirect(`/cars/reservations/update/${bookingUpdate}`);
+  } catch (error) {
+    console.log("Data couldn't be displayed");
+  }
+});
+
+
 
 /* CANCEL RESERVATION */
 router.get("/reservations/delete/:id", async (req, res, next) => {
-  console.log(req.params);
   try {
-    const bookingData = await BookingModel.findByIdAndDelete({_id: req.params.id})
+    const bookingData = await BookingModel.findByIdAndDelete({ _id: req.params.id })
     res.redirect("/cars/reservations")
   } catch (error) {
     console.log("Booking could not be cancelled");

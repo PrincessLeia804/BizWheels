@@ -1,0 +1,47 @@
+<h2>Update your Travel-Request</h2>
+
+<!-- Form -->
+<form action="/cars/reservations/update/<%- booking.id %>" method="POST">
+  <div class="card-container card card-body">
+    <label>Start Date
+      <input name="startDate" value="<%- moment(booking.startDate).format('LL') %>" />
+    </label>
+    <label>New Start Date
+      <input name="newStartDate" type="date" />
+    </label>
+  </div>
+  <div class="card-container card card-body">
+    <label>End Date
+      <input name="endDate" value="<%- moment(booking.endDate).format('LL') %>" />
+    </label>
+    <label>New End Date
+      <input name="newEndDate" type="date" value="<%- moment(booking.endDate).format('LL')%>" />
+    </label>
+  </div>
+  <div class="card-container card card-body">
+    <label>Occasion
+      <input name="occasion" value="<%- booking.occasion %>" />
+    </label>
+  </div>
+  <div class="card-container card card-body">
+    <label>Destination:
+      <input name="destination" value="<%- booking.destination %>" />
+    </label>
+  </div>
+
+
+  <!-- Buttons -->
+  <div class="card-container card card-body">
+    <div>
+      <a href="/cars/reservations/update/<%- booking.id %>">
+        <button type="submit">Save changes</button>
+      </a>
+    </div>
+</form>
+<div>
+  <a href="/cars/reservations">
+    <button>Back to my Requests</button>
+  </a>
+</div>
+</div>
+</div>
