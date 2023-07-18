@@ -304,6 +304,12 @@ btn {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding-left: 20px;
   }
 
   .login-form {
@@ -320,11 +326,6 @@ btn {
     width:50%; 
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   }
-  
-  /* .login_btn:hover{
-  color: black;
-  background-color: white;
-  } */
   
   .links{
   color: white;
