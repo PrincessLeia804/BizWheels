@@ -10,7 +10,6 @@ const { isLoggedIn } = require("../middleware/route-guard");
 const Car = require("../models/Car.model");
 const BookingModel = require("../models/Booking.model");
 
-
 async function getAvailableCars(today, tomorrow) {
   const availableCars = await getAllCars();
   const existingBookings = await checkExistingBookings(today, tomorrow);
@@ -19,7 +18,7 @@ async function getAvailableCars(today, tomorrow) {
 }
 
 router.get("/", (req, res) => {
-  res.json("Cars index will be here");
+  res.json("Cars index should be here");
 });
 
 router.get("/request", isLoggedIn, async (req, res) => {
@@ -61,8 +60,11 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
     res.render("cars/confirmation", { startDate, endDate, car});
   } catch (error) {
     console.log("Error creating the booking:", error);
-    res.status(500).send("Error creating the booking: " + error.message);
+    const errorMessage = "Error creating the booking: " + error.message;
+    const script = `<script>alert('${errorMessage}'); window.location.href = '/cars/request';</script>`;
+    res.send(script);
   }
+  
 });
 
 

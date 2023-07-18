@@ -102,9 +102,32 @@ async function checkUserExistingBookings(userId, startDate, endDate) {
   }
 }
 
+async function getPopulatedUserBookings(userId) {
+  try {
+    const user = await User.findById(userId);
+    const bookings = await Booking.find({ employeeId: userId });
+
+    const populatedBookings = await Promise.all(
+      bookings.map(async (booking) => {
+        const car = await Car.findById(booking.carId);
+        booking.car = car;
+        return booking;
+      })
+    );
+
+    user.bookings = populatedBookings;
+
+    return user;
+  } catch (error) {
+    console.log('Failed to get populated user ebookings:', error);
+    throw error;
+  }
+}
+
 
 module.exports = {
   createBooking, 
   checkExistingBookings, 
   checkUserExistingBookings,
+  getPopulatedUserBookings,
 };
