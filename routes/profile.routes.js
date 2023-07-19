@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
         const userData = await UserModel.findOne({email: req.session.user.email})
         res.render("profiles/user-profile", {user : userData})
       } catch (error) {
-        console.log('Well that didnt work')
+        console.log(error)
       }
   })
   
