@@ -2,7 +2,7 @@ body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
-  background: url('fallback.jpg') no-repeat;
+  /* background: url('fallback.jpg') no-repeat; */
   background-size: cover;
 }
 
@@ -324,6 +324,12 @@ btn {
   
   .login-btn {
     width:50%; 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .index-btn {
+    align-self: stretch;
+    min-width: 100px; 
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   }
   
