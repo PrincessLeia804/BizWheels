@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 const salt = bcrypt.genSaltSync(13);
 
 /* USER DASHBOARD */
-router.get("/", (req, res, next) => {
-      res.render("profiles/user-profile", {userInSession: req.session.user})
+router.get("/", async (req, res, next) => {
+  res.render("profiles/user-profile", {userInSession: req.session.user})
   })
   
   /* ACCOUNT DETAILS */
