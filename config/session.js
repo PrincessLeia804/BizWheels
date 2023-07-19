@@ -19,7 +19,7 @@ module.exports = app => {
         maxAge: 60000 * 60 * 24 * 7 // 60 * 1000 ms === 1 min
       },
       store: MongoStore.create({
-        mongoUrl: process.env.MongoDB_URI || "mongodb://127.0.0.1:27017/bizwheels",
+        mongoUrl: process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/bizwheels",
       })
     })
   );
