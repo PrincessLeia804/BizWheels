@@ -292,10 +292,11 @@ btn {
   }
   
   .forms-card-header h3{
-    color: rgb(249, 248, 248);
-    margin: 0;
-    background-color:rgb(139, 176, 187);
-    padding: 15px;
+  color: rgb(249, 248, 248);
+  margin: 0;
+  background-color:rgb(139, 176, 187);
+  padding: 15px;
+  text-align: center;
 }
 
 .forms-card-body {
@@ -303,9 +304,9 @@ btn {
 }
 
   .forms-card-footer {
-    color: rgb(249, 248, 248);
-    background-color:rgb(139, 176, 187);
-    padding: 15px;
+  color: rgb(249, 248, 248);
+  background-color:rgb(139, 176, 187);
+  padding: 15px;
   }
 
   .login-img {
@@ -359,6 +360,22 @@ btn {
     min-width: 300px; 
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
     color: white !important;
+  }
+
+  .dashboard-img{
+  background-image: url('../images/LoginPage_cropped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 100%;
+  }
+
+  .dashboard-card {
+    background-color:rgba(139, 176, 187, 0.9);
+    border-radius:5px;
+    overflow: hidden;
+    width: 35%;
+    min-width: 400px;
   }
   
   .links{

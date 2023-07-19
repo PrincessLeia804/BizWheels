@@ -5,7 +5,14 @@ const salt = bcrypt.genSaltSync(13);
 
 /* USER DASHBOARD */
 router.get("/", async (req, res, next) => {
-  res.render("profiles/user-profile", {userInSession: req.session.user})
+      const userInSession = req.session.user
+
+      try {
+        const userData = await UserModel.findOne({email: req.session.user.email})
+        res.render("profiles/user-profile", {user : userData})
+      } catch (error) {
+        console.log(error)
+      }
   })
   
   /* ACCOUNT DETAILS */
