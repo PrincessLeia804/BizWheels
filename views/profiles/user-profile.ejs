@@ -1,28 +1,40 @@
-<div>
-  <h1>Welcome to your Dashboard, <%- user.firstName %></h1>
-  <div class="card-container">
-    <!-- User Profile -->
-    <a href="/profile/my-account" class="linked-cards">
-      <div class="card card-body">
-        <h3>My Account</h3>
-      </div>
-    </a>
 
-    <!-- Car reservation -->
-    <a href="/cars/request" class="linked-cards">
-      <div class="card card-body">
-        <h3>Rent a Car</h3>
-      </div>
-    </a>
 
-    <!-- History -->
-    <a href="/cars/reservations" class="linked-cards">
-      <div class="card card-body">
-        <h3>My Reservations</h3>
-      </div>
-    </a>
-  </div>
+<div class="dashboard-img d-flex flex-column justify-content-start align-items-center">
   <div>
-    <a href="/auth/logout"><button>Logout</button></a>
+  <h1>Welcome to your Dashboard, <%- user.firstName %></h1>
+</div>
+  <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch ">
+    <div class="forms-card-header">
+      <a href="/profile/my-account" class="linked-cards">
+        <h3>My Account</h3>
+      </a>
+    </div>
+    <div class="card-body forms-card-body border-top">
+    </div>
   </div>
+</div>
+
+
+
+
+
+<!-- Car reservation -->
+<a href="/cars/request" class="linked-cards">
+  <div class="card card-body">
+    <h3>Rent a Car</h3>
+  </div>
+</a>
+
+<!-- History -->
+<a href="/cars/reservations" class="linked-cards">
+  <div class="card card-body">
+    <h3>My Reservations</h3>
+  </div>
+</a>
+</div>
+<div>
+  <a href="/auth/logout"><button>Logout</button></a>
+</div>
+</div>
 </div>
