@@ -4,11 +4,11 @@
   <form class="form" action="/cars/request" method="POST" onsubmit="return validateDates()">
 
     <div class="filter-container">
-      <label for="date" class="col-form-label" id="form-label">Start date:</label>
+      <label for="date" class="col-form-label text-nowrap" id="form-label">Start date:</label>
       <input type="date" id="startDate" name="startDate" value="<%=startDate%>" class="form-control" required>
     </div>
     <div class="filter-container">
-      <label for="date" class="form-label" id="form-label">End date:</label>
+      <label for="date" class="form-label text-nowrap" id="form-label">End date:</label>
       <input type="date" id="endDate" name="endDate" value="<%=endDate%>" class="form-control" required>
     </div>
 

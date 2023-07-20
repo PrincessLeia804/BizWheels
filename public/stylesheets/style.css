@@ -102,7 +102,7 @@ body {
   background-color: #f9f9f9;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
+
 }
 
 .card-image {
@@ -123,7 +123,7 @@ body {
 .description {
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .card-title {
@@ -212,7 +212,7 @@ btn {
   align-items: center;
   margin-right: 20px;
   margin-bottom: 20px;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 
@@ -232,7 +232,7 @@ btn {
 .filter-container label {
   display: inline-block;
   margin-right: 10px;
-  color: rgb(209, 99, 99);
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 14px;
   text-transform: uppercase;
@@ -272,19 +272,14 @@ btn {
   align-items: baseline;
 }
 
-.userStatus p{
+.userStatus p {
   margin-right: 10px;
 }
 
 .car-image {
-  width: 250px; 
-  height: 150px; 
+  width: 250px;
+  height: 150px;
   object-fit: scale-down;
-}
-
-.cars {
-  margin-right: 20px;
-  margin-bottom: 20px;
 }
 
 .container {
@@ -300,7 +295,7 @@ btn {
 
 h2 {
   margin-top: 0;
-  
+
 }
 
 table {
@@ -333,13 +328,15 @@ a {
   justify-content: space-between;
 }
 
-.button-admin{
+.button-admin {
   display: flex;
   flex-direction: row;
 }
+
 .button-admin button {
   margin-right: 12px;
 }
+
 /* FORMS */
 html,
 body {
@@ -381,7 +378,17 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-attachment: fixed;
-    color: white;
+  color: white;
+  align-items: stretch;
+  padding: 20px;
+  min-height: 100vh;
+}
+.login-img-1 {
+  background-image: url('../images/LoginPage_cropped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  color: white;
   align-items: stretch;
   padding: 20px;
   
@@ -398,8 +405,8 @@ body {
   overflow: hidden;
   width: 35%;
   opacity: 0;
-  animation: fadeIn 3s;
-  animation-delay: 3s;
+  animation: fadeIn 2s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 
@@ -416,7 +423,6 @@ body {
 input:focus {
   outline: 0 0 0 0 !important;
   box-shadow: 0 0 0 0 !important;
-
 }
 
 .login-btn {
@@ -445,15 +451,15 @@ input:focus {
 }
 
 .dashboard-card {
-  background-color:rgba(139, 176, 187, 0.9);
-  border-radius:5px;
+  background-color: rgba(139, 176, 187, 0.9);
+  border-radius: 5px;
   overflow: hidden;
   width: 30%;
   min-width: 100px;
   min-height: 200px;
 }
-  
-  .links{
+
+.links {
   color: white;
 }
 
@@ -465,7 +471,6 @@ input:focus {
   display: flex;
   flex-direction: column;
 }
-
 
 .error-message {
   color: red;
@@ -479,8 +484,8 @@ input:focus {
   padding: 20px;
 }
 
-#table{
- width:30%;
+#table {
+  width: 30%;
 }
 
 
@@ -497,7 +502,7 @@ input:focus {
 
 .form-container label {
   display: inline;
-  color:#202326;
+  color: #202326;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -535,14 +540,15 @@ input:focus {
   text-decoration: none;
 }
 
-#card-background{
+#card-background {
   background-color: rgb(235, 235, 235);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-#form-container{
+
+#form-container {
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -557,9 +563,19 @@ input:focus {
   flex: 1;
   white-space: nowrap;
   margin-right: 10px;
-  
+
 }
 
 #checkbox input {
-    align-self: center;
+  align-self: center;
+}
+
+.list-group{
+  width: 80%;
+}
+#form-request-container{
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

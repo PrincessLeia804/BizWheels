@@ -51,7 +51,7 @@
       <span class="navbar-text">
         <% if (session.user) { %>
         <div class="userStatus">
-          <p>Hi <%-session.user.firstName%> <%-session.user.lastName%>!</p>
+          <p>Hi <%-session.user.firstName%>!</p>
           <a href="/auth/logout" class="btn btn-outline-light">Logout</a>
         </div>
         <% } else { %>

@@ -15,6 +15,7 @@
           <p>Welcome, <%= session.user.firstName %> <%= session.user.lastName %>!</p>
           <% if (session.user.role === "admin") { %>
           <a href="/admin" class="index-btn btn btn-lg mb-3">Go to Admin Dashboard</a>
+          <a href="/profile" class="index-btn btn btn-lg mb-3">Go to your Dashboard</a>
           <% } else { %>
           <a href="/profile" class="index-btn btn btn-lg mb-3">Go to your Dashboard</a>
           <% } %>
