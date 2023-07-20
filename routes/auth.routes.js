@@ -33,7 +33,7 @@ router.post("/signup", async (req, res, next) => {
 /* SIGN IN */
 
 router.get("/login", (req, res, next) => {
-  res.render("authentication/login")
+  res.render("authentication/login", { errorMessage: "", user: "" })
 })
 
 router.post("/login", async (req, res, next) => {
@@ -50,29 +50,21 @@ router.post("/login", async (req, res, next) => {
         delete loggedUser.passwordHash
 
         req.session.user = loggedUser
-        
+
         // check role and redirect to user / admin-dashboard
-        if(loggedUser.role === "admin"){
+        if (loggedUser.role === "admin") {
           res.redirect("/admin/")
-        }else{
-        res.redirect("/profile")
+        } else {
+          res.redirect("/profile")
         }
 
-      } else {
         // Password incorrect
-        console.log("A combination of the entered data cannot be found")
-        res.render("authentication/login", {
-          errorMessage: "A combination of the entered data cannot be found",
-          prevUsername: { user: exisitingUser.username }
-        })
+      } else {
+        res.render("authentication/login", { errorMessage: "A combination of the entered data cannot be found", user: exisitingUser.email })
       }
+      // if User does not exist
     } else {
-      // User does not exist
-      console.log(' "The combination does not match any entries": ',  "The combination does not match any entries");
-      res.render("authentication/login", {
-        errorMessage: "The combination does not match any entries",
-        prevUsername: { user: userExists.username }
-      })
+      res.render("authentication/login", { errorMessage: "The combination does not match any entries", user: "" })
     }
   } catch (err) {
     console.log("An error occured")

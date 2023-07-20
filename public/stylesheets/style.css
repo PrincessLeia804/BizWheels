@@ -76,11 +76,11 @@ body {
   flex-direction: row;
 }
 
-#form-label {
+/* #form-label {
  
   text-wrap: nowrap;
 
-}
+} */
 
 #car-button {
   background-color: rgb(199, 82, 82);
@@ -436,17 +436,24 @@ input:focus {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 100%;
+  min-height: 100%;
+}
+
+.dashboard-h {
+  font-weight: 600;
+  color: white;
 }
 
 .dashboard-card {
-  background-color: rgba(139, 176, 187, 0.9);
-  border-radius: 5px;
-  width: 35%;
-  min-width: 400px;
+  background-color:rgba(139, 176, 187, 0.9);
+  border-radius:5px;
+  overflow: hidden;
+  width: 30%;
+  min-width: 100px;
+  min-height: 200px;
 }
-
-.links {
+  
+  .links{
   color: white;
 }
 
@@ -458,6 +465,20 @@ input:focus {
   display: flex;
   flex-direction: column;
 }
+
+
+.error-message {
+  color: red;
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+#admin-dashboard-img {
+  object-fit: contain;
+  padding: 20px;
+}
+
 #table{
  width:30%;
 }

@@ -1,44 +1,57 @@
-<h2>My Reservations</h2>
+<div class="dashboard-img d-flex flex-column justify-content-start align-items-center p-5">
+<h2 class="dashboard-h">My Reservations</h2>
 
-<!-- TODO: Add condition to separate previous/upcoming reservations -->
-<h3>Upcoming Reservations</h3>
-<div class="card-container">
+  <div class="card-container cars d-flex">
   <% if (activeBookings) { %>
   <% activeBookings.forEach(reservation => { %>
-  <div class="card card-body">
-    <h4>Active</h4>
-    <p>
-      <%= moment(reservation.startDate).format('LL') %> -
-      <%= moment(reservation.endDate).format('LL') %>
-  
-    </p>
-    <% if (reservation) { %>
-    <h5><%- reservation.occasion %> <h5>
-        <h5><%- reservation.destination %> <h5>
-            <% } %>
-
-            <a href="/cars/reservations/update/<%- reservation.id %>">
-              <button>Add Travel-Details</button>
-            </a>
-            <a href="/cars/reservations/delete/<%- reservation.id%>" onclick="return confirm('Are you sure you want to cancel your reservation?');">
-              <button>Cancel</button>
-            </a>
+  <div class="card">
+    <div class="card-body" id="card-body">
+      <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> -
+        <%= moment(reservation.endDate).format('LL') %></h4>
+      <div class="card-body description">
+        <p class="card-text"><b>Active</b></p>
+        <% if (reservation) { %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%- reservation.occasion %> </li>
+          <li class="list-group-item"><%- reservation.destination %> </li>
+        </ul>
+        <div class="card-body">
+          <a href="/cars/reservations/update/<%- reservation.id %>">
+            <button class="btn btn-primary" id="car-button">Add Travel Details</button>
+          </a><br>
+          <a href="/cars/reservations/delete/<%- reservation.id%>" onclick="return confirm('Are you sure you want to cancel your reservation?');">
+            <button class="btn btn-primary" id="car-button">Cancel</button>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+  <% } %>
   <% }) %>
   <% } %>
 </div>
 
-<h3>Previous Reservations</h3>
-<div class="card-container">
+
+<h2 class="dashboard-h">Previous Reservations</h2>
+<div class="card-container cars">
   <% if (prevBookings) { %>
   <% prevBookings.forEach(reservation => { %>
-  <div class="card card-body">
-    <h4>Closed</h4>
-    <p>
-      <%= moment(reservation.startDate).format('LL') %> -<br>
-      <%= moment(reservation.endDate).format('LL') %> -<br>
-    </p>
+  <div class="card">
+    <div class="card-body" id="card-body">
+      <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> -
+        <%= moment(reservation.endDate).format('LL') %></h4>
+      <div class="card-body description">
+        <p class="card-text"><b>Closed</b></p>
+        <% if (reservation) { %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%- reservation.occasion %> </li>
+          <li class="list-group-item"><%- reservation.destination %> </li>
+        </ul>
+      </div>
+    </div>
   </div>
+  <% } %>
   <% }) %>
   <% } %>
+</div>
 </div>
