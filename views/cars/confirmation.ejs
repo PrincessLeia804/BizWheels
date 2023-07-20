@@ -1,22 +1,19 @@
-<h2>Request Confirmation</h2>
-<h2>Booking Confirmation</h2>
-
-<p>Your request has been submitted successfully.</p>
-
-<h3>Request Details</h3>
-<ul>
-  <li>Start Date: <%= startDate %></li>
-  <li>End Date: <%= endDate %></li>
- </ul>
-
-<h3>Vehicle Information</h3>
-<ul>
-  <ul>
-        <li>Make: <%= car.make %></li>
-    <li>Model: <%= car.model %></li>
-    <li>Year: <%= car.year %></li>
-    <li>Registration: <%= car.registration %></li>
-  </ul>
-</ul>
-
-<p>Thank you for choosing our service. We will process your request and contact you shortly.</p>
+<div class="login-img">
+  <h2>Request Confirmation</h2>
+  <div class="form-container flex-sm-column align-items-sm-center" id="form-container">
+    <p>Your request has been successfully approved.</p>
+    <h3>Request Details</h3>
+    <ul class="list-group ">
+      <li class="list-group-item">Start Date: <%= startDate %></li>
+      <li class="list-group-item">End Date: <%= endDate %></li>
+    </ul>
+    <h3>Vehicle Information</h3>
+    <ul class="list-group">
+      <li class="list-group-item">Make: <%= car.make %></li>
+      <li class="list-group-item">Model: <%= car.model %></li>
+      <li class="list-group-item">Year: <%= car.year %></li>
+      <li class="list-group-item">Registration: <%= car.registration %></li>
+    </ul>
+    <p>Thank you for choosing our service.</p>
+  </div>
+</div>
