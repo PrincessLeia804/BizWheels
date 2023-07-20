@@ -563,6 +563,9 @@ input:focus {
 .list-group{
   width: 80%;
 }
-#form-container{
+#form-request-container{
   max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
