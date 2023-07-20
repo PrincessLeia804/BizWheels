@@ -1,87 +1,86 @@
-<h2>Update the Car</h2>
+<div class="login-img">
+  <h2>Update the Car</h2>
 
-<!-- Form -->
-<div class="card-container card card-body">
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Make:
-        <input name="make" value="<%= car.make %>" />
-      </label>
+  <div class="card-container card card-body">
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Make:
+          <input name="make" value="<%= car.make %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Model:
+          <input name="model" value="<%= car.model %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Year:
+          <input name="year" value="<%= car.year %>" />
+        </label>
+    </div>
+    <div>
+      <form>
+        <label>Registration:
+          <input name="registration" value="<%= car.registration %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Color:
+          <input name="color" value="<%= car.color %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Mileage:
+          <input name="mileage" value="<%= car.mileage %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Fuel Type:
+          <input name="fuelType" value="<%= car.fuelType %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Features:
+          <input name="features" value="<%= car.features %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Number of Seats:
+          <input name="numberOfSeats" value="<%= car.numberOfSeats %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Automatic:
+          <input name="isAutomatic" value="<%= car.isAutomatic %>" />
+        </label>
+    </div>
+    <div>
+      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <label>Type:
+          <input name="carType" value="<%= car.carType %>" />
+        </label>
+    </div>
   </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Model:
-        <input name="model" value="<%= car.model %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Year:
-        <input name="year" value="<%= car.year %>" />
-      </label>
-  </div>
-  <div>
-    <form>
-      <label>Registration:
-        <input name="registration" value="<%= car.registration %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Color:
-        <input name="color" value="<%= car.color %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Mileage:
-        <input name="mileage" value="<%= car.mileage %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Fuel Type:
-        <input name="fuelType" value="<%= car.fuelType %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Features:
-        <input name="features" value="<%= car.features %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Number of Seats:
-        <input name="numberOfSeats" value="<%= car.numberOfSeats %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Automatic:
-        <input name="isAutomatic" value="<%= car.isAutomatic %>" />
-      </label>
-  </div>
-  <div>
-    <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-      <label>Type:
-        <input name="carType" value="<%= car.carType %>" />
-      </label>
-  </div>
-</div>
 
-<!-- Buttons -->
-<div class="card-container card card-body">
-  <div>
-    <a href="/admin/fleet/update/<%- car.id %>">
-      <button type="submit">Save changes</button>
-    </a>
+  <div class="card-container card card-body">
+    <div>
+      <a href="/admin/fleet/update/<%- car.id %>">
+        <button type="submit">Save changes</button>
+      </a>
+    </div>
+    </form>
+    <div>
+      <a href="/admin/fleet">
+        <button>Back to Overview</button>
+      </a>
+    </div>
   </div>
-  </form>
-  <div>
-    <a href="/admin/fleet">
-      <button>Back to Overview</button>
-    </a>
-  </div>
-</div>
 </div>

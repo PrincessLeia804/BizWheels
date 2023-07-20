@@ -205,6 +205,18 @@ btn {
   border-color: var(--bs-btn-hover-border-color);
 }
 
+.admin-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top:10px;
+}
+
+
+
 .linked-cards {
   text-decoration: none;
   color: black;
@@ -369,11 +381,8 @@ body {
   background-position: 50% 50%;
   overflow: hidden;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   align-items: stretch;
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .login-form {
@@ -447,4 +456,20 @@ input:focus {
 .signIn {
   display: flex;
   flex-direction: column;
+}
+#table{
+  background-color: #0056b3;
+}
+.admin-img {
+  background-image: url('../images/LoginPage_cropped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding-left: 20px;
 }
