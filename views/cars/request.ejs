@@ -1,90 +1,91 @@
-<nav>
-  <a href="/profile">Dashboard</a>
-  <a href="/profile/my-account">My Account</a>
-  <a href="/cars/reservations">My Reservations</a>
-  <a href="/auth/logout">Logout</a>
-</nav>
-<h2>Car Request Form</h2>
+<div class="login-img" style="width:100%"">
+  <h1>Car Request </h1>
 
-<form action="/cars/request" method="POST" onsubmit="return validateDates()">
-  <label for="date">Start date:</label>
-  <input type="date" id="startDate" name="startDate" value="<%=startDate%>" required>
+  <form class="form" action="/cars/request" method="POST" onsubmit="return validateDates()">
 
-  <label for="date">End date:</label>
-  <input type="date" id="endDate" name="endDate" value="<%=endDate%>" required>
+    <div class="filter-container">
+      <label for="date" class="col-form-label" id="form-label">Start date:</label>
+      <input type="date" id="startDate" name="startDate" value="<%=startDate%>" class="form-control" required>
+    </div>
+    <div class="filter-container">
+      <label for="date" class="form-label" id="form-label">End date:</label>
+      <input type="date" id="endDate" name="endDate" value="<%=endDate%>" class="form-control" required>
+    </div>
 
-  <button type="submit">Check availability</button>
-</form>
-
-<% if (availableCars && availableCars.length > 0) { %>
-<div class="filter-container">
-  <label for="filter">Filters:</label>
-  <div id="filter">
-    <select id="makeFilter" name="makefilter" onchange="filterCars()">
-      <optgroup label="Make">
-        <option value="make">Make</option>
-      <optgroup label="Make Options" id="makeOptions">
-        <% const uniqueMakes = [...new Set(availableCars.map(car => car.make))]; %>
-        <% uniqueMakes.forEach(function(make) { %>
-        <option value="<%= make.toLowerCase() %>"><%= make %></option>
-        <% }) %>
-      </optgroup>
-      </optgroup>
-    </select>
-    <select id="fuelFilter" name="fuelfilter" onchange="filterCars()">
-      <optgroup label="Fuel">
-        <option value="fuel">Fuel</option>
-      <optgroup label="Fuel Options" id="fuelOptions">
-        <% const uniqueFuel = [...new Set(availableCars.map(car => car.fuelType))]; %>
-        <% uniqueFuel.forEach(function(fuelType) { %>
-        <option value="<%= fuelType.toLowerCase() %>"><%= fuelType %></option>
-        <% }) %>
-      </optgroup>
-      </optgroup>
-    </select>
-    <select id="transmissionFilter" name="transmissionlfilter" onchange="filterCars()">
-      <optgroup label="Transmission">
-        <option value="transmission">Transmission</option>
-      <optgroup label="Transmission Options" id="transmissionOptions">
-        <option value="manual">Manual</option>
-        <option value="automatic">Automatic</option>
-      </optgroup>
-      </optgroup>
-    </select>
-  </div>
-</div>
-
-<h3>Available Cars:</h3>
-<div class="card-container">
-  <% availableCars.forEach(function(car) { %>
-  <div class="card">
-    <form method="POST" action="/cars/submit-request">
-      <div class="card-body">
-        <img src="<%= car.imageUrl ? car.imageUrl : "/images/defaultcar.png" %>" alt="Car Image" class="car-image">
-        <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
-        <p class="card-text">Description:
-        <ul>
-          <li class="fuelType"><%= car.fuelType %></li>
-          <li><%= car.features %></li>
-          <li><%= car.registration %></li>
-          <li class="transmission"><%= car.isAutomatic ? "Automatic" : "Manual" %></li>
-        </ul>
-        <input type="hidden" name="carId" value="<%= car.id %>">
-        <input type="hidden" name="startDate" value="<%= startDate %>">
-        <input type="hidden" name="endDate" value="<%= endDate %>">
-        <button class="btn btn-primary">Request </button>
+    <% if (availableCars && availableCars.length > 0) { %>
+    <div class="filter-container">
+      <label for="filter" class="form-label">Filters:</label>
+      <div id="filter">
+        <select id="makeFilter" name="makefilter" onchange="filterCars()">
+          <optgroup label="Make">
+            <option value="make">Make</option>
+          <optgroup label="Make Options" id="makeOptions">
+            <% const uniqueMakes = [...new Set(availableCars.map(car => car.make))]; %>
+            <% uniqueMakes.forEach(function(make) { %>
+            <option value="<%= make.toLowerCase() %>"><%= make %></option>
+            <% }) %>
+          </optgroup>
+          </optgroup>
+        </select>
+        <select id="fuelFilter" name="fuelfilter" onchange="filterCars()">
+          <optgroup label="Fuel">
+            <option value="fuel">Fuel</option>
+          <optgroup label="Fuel Options" id="fuelOptions">
+            <% const uniqueFuel = [...new Set(availableCars.map(car => car.fuelType))]; %>
+            <% uniqueFuel.forEach(function(fuelType) { %>
+            <option value="<%= fuelType.toLowerCase() %>"><%= fuelType %></option>
+            <% }) %>
+          </optgroup>
+          </optgroup>
+        </select>
+        <select id="transmissionFilter" name="transmissionlfilter" onchange="filterCars()">
+          <optgroup label="Transmission">
+            <option value="transmission">Transmission</option>
+          <optgroup label="Transmission Options" id="transmissionOptions">
+            <option value="manual">Manual</option>
+            <option value="automatic">Automatic</option>
+          </optgroup>
+          </optgroup>
+        </select>
       </div>
-    </form>
+      <button type="submit" class="btn btn-primary" id="car-button">Check availability</button>
+    </div>
+  </form>
+  <h3>Available Cars:</h3>
+  <div class="card-container cars">
+    <% availableCars.forEach(function(car) { %>
+    <div class="card">
+      <form method="POST" action="/cars/submit-request">
+        <div class="card-body" id="card-body">
+          <h4 class="card-title"><%= car.make %> <%= car.model %></h4>
+          <img src="<%= car.imageUrl ? car.imageUrl : "/images/defaultcar.png" %>" alt="Car Image" class="car-image">
+          <div class="card-body description">
+            <p class="card-text"><b>Description:</b></p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item fuelType"><%= car.fuelType %></li>
+              <li class="list-group-item"><%= car.features %></li>
+              <li class="list-group-item"><%= car.registration %></li>
+              <li class="list-group-item transmission"><%= car.isAutomatic ? "Automatic" : "Manual" %></li>
+            </ul>
+            <input type="hidden" name="carId" value="<%= car.id %>">
+            <input type="hidden" name="startDate" value="<%= startDate %>">
+            <input type="hidden" name="endDate" value="<%= endDate %>">
+            <div class="card-body">
+              <button class="btn btn-primary" id="car-button">Request </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <% }) %>
   </div>
-  <% }) %>
+  <% } else { %>
+  <p>No cars available for the selected date and time.</p>
+  <% } %>
 </div>
-<% } else { %>
-<p>No cars available for the selected date and time.</p>
-<% } %>
-
 <script>
   function validateDates() {
-    const startDateInput = document.getElementById('startDate'); 
+    const startDateInput = document.getElementById('startDate');
     const endDateInput = document.getElementById('endDate');
 
     const startDate = new Date(startDateInput.value);

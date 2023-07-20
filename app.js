@@ -13,6 +13,10 @@ const app = express();
 
 // add session
 require("./config/session")(app)
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+  });
 
 // create absolute path to views-folder
 app.set('views', __dirname + "/views")
