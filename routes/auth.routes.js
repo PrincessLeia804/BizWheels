@@ -83,7 +83,8 @@ router.post("/login", async (req, res, next) => {
 router.get("/logout", (req, res, next) => {
   req.session.destroy(err => {
     if (err) next(err)
-    res.render("authentication/logout")
+    delete res.locals.session;
+    res.redirect('/');
   })
 })
 
