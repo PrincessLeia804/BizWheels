@@ -1,55 +1,46 @@
 <div class="dashboard-img">
-  <div style="text-align:center;" class="p-5">
+  <div style="text-align:center;" class="p-3">
     <h1>Welcome to your Dashboard, <%- user.firstName %></h1>
   </div>
-  <div class="d-flex flex-wrap gap-4 justify-content-between p-5 m-5">
-    <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch">
+  <div class="d-flex flex-wrap gap-4  flex-shrink-2 justify-content-between p-4 m-4">
+    <div class="dashboard-card d-flex flex-column justify-content-start align-items-stretch">
+      <a href="/profile/my-account" class="linked-cards">
       <div class="forms-card-header">
-        <a href="/profile/my-account" class="linked-cards">
           <h3>My Account</h3>
         </div>
-        <div class="card-body forms-card-body border-top" style="height: 200px;">
+        <div class="card-body forms-card-body border-top">
         </div>
       </a>
-    </div>
+      </div>
 
-    <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch ">
+    <div class="dashboard-card d-flex flex-column justify-content-start align-items-stretch ">
       <div class="forms-card-header">
         <a href="/cars/request" class="linked-cards">
           <h3>Request a Car</h3>
         </div>
-        <div class="card-body forms-card-body border-top" style="height: 200px;">
+        <div class="card-body forms-card-body border-top">
         </div>
       </a>
     </div>
 
-    <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch ">
+    <div class="dashboard-card d-flex flex-column justify-content-start align-items-stretch ">
       <div class="forms-card-header">
         <a href="/cars/reservations" class="linked-cards">
           <h3>My Reservations</h3>
         </div>
-        <div class="card-body forms-card-body border-top" style="height: 200px;">
+        <div class="card-body forms-card-body border-top">
         </div>
       </a>
     </div>
 
-    <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch ">
+    <div class="dashboard-card d-flex flex-column justify-content-start align-items-stretch ">
       <div class="forms-card-header">
         <a href="" class="linked-cards">
           <h3>Coming soon..</h3>
         </div>
-        <div class="card-body forms-card-body border-top" style="height: 200px;">
+        <div class="card-body forms-card-body border-top">
         </div>
       </a>
     </div>
   </div>
-</div>
-
-<!-- TODO: Add Logout Buttons -->
-</a>
-</div>
-<div>
-  <a href="/auth/logout"><button>Logout</button></a>
-</div>
-</div>
 </div>

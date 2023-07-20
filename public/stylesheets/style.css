@@ -375,7 +375,8 @@ btn {
     border-radius:5px;
     overflow: hidden;
     width: 35%;
-    min-width: 400px;
+    min-width: 100px;
+    min-height: 200px;
   }
   
   .links{
