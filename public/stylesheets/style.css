@@ -320,8 +320,13 @@ a {
   justify-content: space-between;
 }
 
-
-
+.button-admin{
+  display: flex;
+  flex-direction: row;
+}
+.button-admin button {
+  margin-right: 12px;
+}
 /* FORMS */
 html,
 body {
