@@ -1,47 +1,51 @@
-<h2>Update your Travel-Request</h2>
-
-<!-- Form -->
-<form action="/cars/reservations/update/<%- booking.id %>" method="POST">
-  <div class="card-container card card-body">
-    <label>Start Date
-      <input name="startDate" value="<%- moment(booking.startDate).format('LL') %>" />
-    </label>
-    <label>New Start Date
-      <input name="newStartDate" type="date" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>End Date
-      <input name="endDate" value="<%- moment(booking.endDate).format('LL') %>" />
-    </label>
-    <label>New End Date
-      <input name="newEndDate" type="date" value="<%- moment(booking.endDate).format('LL')%>" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>Occasion
-      <input name="occasion" value="<%- booking.occasion %>" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>Destination:
-      <input name="destination" value="<%- booking.destination %>" />
-    </label>
-  </div>
-
-
-  <!-- Buttons -->
-  <div class="card-container card card-body">
-    <div>
-      <a href="/cars/reservations/update/<%- booking.id %>">
-        <button type="submit">Save changes</button>
-      </a>
+<div class="dashboard-img d-flex justify-content-center align-items-start pt-5">
+  <div class="card" style="width:35%;">
+    <div class="card-body" id="card-body">
+      <form action="/cars/reservations/update/<%- booking.id %>" method="POST">
+        <div class="card-body description">
+          <h4 class="card-text"><b>Update your travel request</b></h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <label>Start Date<br>
+                <input name="startDate" value="<%- moment(booking.startDate).format('LL') %>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>New Start Date<br>
+                <input name="newStartDate" type="date" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>End Date<br>
+                <input name="endDate" value="<%- moment(booking.endDate).format('LL') %>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>New End Date<br>
+                <input name="newEndDate" type="date" value="<%- moment(booking.endDate).format('LL')%>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>Occasion<br>
+                <input name="occasion" value="<%- booking.occasion %>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>Destination:<br>
+                <input name="destination" value="<%- booking.destination %>" />
+              </label>
+            </li>
+          </ul>
+          <div class="card-body">
+            <a href="/cars/reservations/update/<%- booking.id %>">
+              <button class="btn btn-primary" id="car-button" type="submit">Save changes</button>
+            </a>
+      </form>
     </div>
-</form>
-<div>
-  <a href="/cars/reservations">
-    <button>Back to my Requests</button>
-  </a>
-</div>
-</div>
+  </div>
+  <div class="card-body">
+    <a href="/cars/reservations">
+      <button class="btn btn-primary" id="car-button">Back to my Requests</button>
+    </a>
+  </div>
 </div>

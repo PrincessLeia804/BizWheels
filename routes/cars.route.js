@@ -52,10 +52,9 @@ router.post("/submit-request", isLoggedIn, async function (req, res) {
   try {
     const employeeId = req.session.user._id;
     const booking = await createBooking(carId, employeeId, startDate, endDate);
-    console.log(booking);
 
     const car = await findCar(carId);
-    console.log(car)
+
 
     res.render("cars/confirmation", { startDate, endDate, car });
   } catch (error) {
@@ -133,7 +132,6 @@ router.post("/reservations/update/:id", async (req, res) => {
       { $set: details },
       { new: true }
     );
-    console.log('booking: ', booking);
 
     res.redirect(`/cars/reservations/update/${bookingUpdate}`);
   } catch (error) {
