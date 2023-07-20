@@ -1,25 +1,23 @@
-<div class="dashboard-img">
-  <div style="text-align:center;" class="p-5">
-    <h1>Welcome to your Dashboard, <%- userInSession.firstName %></h1>
-  </div>
-  <div class="d-flex flex-wrap gap-4 justify-content-between p-5 m-5">
+<div class="dashboard-img d-flex">
+  <div class="d-flex flex-wrap gap-4 justify-content-around align-items-start pt-5">
     <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch">
       <div class="forms-card-header">
         <a href="/admin/fleet" class="linked-cards">
-          <h3>Car Mangement</h3>
+          <h3>Car Management</h3>
       </div>
-      <div class="card-body forms-card-body border-top" style="height: 200px;">
+      <div class="card-body forms-card-body border-top" id="admin-dashboard-img">
+        <img src="../images/carManagement.png" style="width: 100%; height: auto">
       </div>
       </a>
     </div>
-
-    <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch ">
+    
+    <div class="dashboard-card d-flex flex-column justify-content-center align-items-stretch">
       <div class="forms-card-header">
         <a href="/admin/users" class="linked-cards">
           <h3>User Management</h3>
       </div>
-      <div class="card-body forms-card-body border-top" style="height: 200px;">
+      <div class="card-body forms-card-body border-top" id="admin-dashboard-img">
+        <img src="../images/userManagement.png" style="width: 100%; height: auto">
       </div>
       </a>
     </div>
-  </div>
