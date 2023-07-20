@@ -1,18 +1,52 @@
+<div class="login-img" >
 <h2>User Bookings</h2>
 
-<h3>User Details</h3>
-<p>Name: <%= user.firstName %> <%= user.lastName %></p>
-<p>Email: <%= user.email %></p>
+<table class="table table-dark" id="table">
+  <thead>
+    <tr>
+      <th colspan="2"><h4>User Details</h4></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Name:</td>
+      <td><%= user.firstName %> <%= user.lastName %></td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td><%= user.email %></td>
+    </tr>
+  </tbody>
+</table>
 
-<h3>Bookings</h3>
-<% if (user.bookings.length > 0) { %>
-<ul>
-  <% user.bookings.forEach(function(booking) { %>
-  <li>Booking ID: <%= booking._id %></li>
-  <li><%= booking.startDate.toISOString().slice(0,10) %> to <%= booking.endDate.toISOString().slice(0,10) %></li>
-  <li>Car: <%= booking.car.make %> <%= booking.car.model %> (<%= booking.car.registration %>)</li>
-  <% }) %>
-</ul>
-<% } else { %>
-<p>No bookings found for this user.</p>
-<% } %>
+<table class="table table-dark" id="table">
+  <thead>
+    <tr>
+      <th colspan="2"><h4>Bookings</h4></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (user.bookings.length > 0) { %>
+      <% user.bookings.forEach(function(booking) { %>
+        <tr>
+          <td>Booking ID:</td>
+          <td><%= booking._id %></td>
+        </tr>
+        <tr>
+          <td>Booking period:</td>
+          <td><%= booking.startDate.toISOString().slice(0,10) %> to <%= booking.endDate.toISOString().slice(0,10) %></td>
+        </tr>
+        <tr>
+          <td>Car:</td>
+          <td><%= booking.car.make %> <%= booking.car.model %> (<%= booking.car.registration %>)</td>
+        </tr>
+      <% }) %>
+    <% } else { %>
+      <tr>
+        <td colspan="2">No bookings found for this user.</td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+</div>
