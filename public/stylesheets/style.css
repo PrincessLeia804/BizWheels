@@ -383,6 +383,16 @@ body {
   padding: 20px;
   min-height: 100vh;
 }
+.login-img-1 {
+  background-image: url('../images/LoginPage_cropped.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  color: white;
+  align-items: stretch;
+  padding: 20px;
+  
+}
 
 .login-form {
   background-color: white;
