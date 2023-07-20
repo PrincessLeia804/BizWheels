@@ -300,6 +300,7 @@ btn {
 
 h2 {
   margin-top: 0;
+  
 }
 
 table {
@@ -383,6 +384,7 @@ body {
   color: white;
   align-items: stretch;
   padding: 20px;
+  height: 100%;
 }
 
 .login-form {
@@ -458,18 +460,86 @@ input:focus {
   flex-direction: column;
 }
 #table{
-  background-color: #0056b3;
+ width:30%;
 }
-.admin-img {
-  background-image: url('../images/LoginPage_cropped.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  overflow: hidden;
-  color: white;
+
+
+/*forms*/
+
+.form-container {
+  background-color: rgba(139, 177, 187, 0.6);
+  align-content: center;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+  display: inline;
+  color:#202326;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-container .form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-container .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-container .buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background-color: rgb(199, 82, 82);
+  cursor: pointer;
+}
+
+.form-container .buttons a {
+  text-decoration: none;
+}
+
+#card-background{
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#form-container{
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: stretch;
-  padding-left: 20px;
+}
+
+#checkbox {
+  display: flex;
+  align-items: center;
+}
+
+#checkbox label {
+  flex: 1;
+  white-space: nowrap;
+  margin-right: 10px;
+  
+}
+
+#checkbox input {
+    align-self: center;
 }

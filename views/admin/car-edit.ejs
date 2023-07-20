@@ -1,13 +1,13 @@
 <div class="login-img">
   <h2>Update the Car</h2>
 
-  <div class="card-container card card-body">
-    <div>
+  <div class="form-container" id="form-container">
       <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+        <div class="card card-body form-col" id="card-background">
         <label>Make:
           <input name="make" value="<%= car.make %>" />
         </label>
-    </div>
+    
     <div>
       <form action="/admin/fleet/update/<%- car.id %>" method="POST">
         <label>Model:
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <div class="card-container card card-body">
+  <div class="buttons">
     <div>
       <a href="/admin/fleet/update/<%- car.id %>">
         <button type="submit">Save changes</button>
@@ -83,4 +83,5 @@
       </a>
     </div>
   </div>
+</div>
 </div>

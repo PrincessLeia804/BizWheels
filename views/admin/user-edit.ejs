@@ -1,44 +1,50 @@
+<div class="login-img" >
 <h2>Update Employee information</h2>
 
-<!-- Form -->
-<form action="/admin/users/update/<%- user.id %>" method="POST">
-  <div class="card-container card card-body">
-    <label>First Name:
-      <input name="firstName" value="<%- user.firstName %>" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>Last Name:
-      <input name="lastName" value="<%- user.lastName %>" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>E-Mail:
-      <input name="email" value="<%- user.email %>" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>Company:
-      <input name="company" value="<%- user.company %>" />
-    </label>
-  </div>
-  <div class="card-container card card-body">
-    <label>New password:
-      <input name="newPassword" type="password" />
-    </label>
-  </div>
+<div class="form-container">
+  <!-- Form -->
+  <form action="/admin/users/update/<%- user.id %>" method="POST">
+    <div class="card card-body form-row" id="card-background">
+      <div class="form-group col-md-6">
+        <label>First Name:
+          <input name="firstName" class="form-control" value="<%- user.firstName %>" />
+        </label>
+      </div>
+      <div class="col">
+        <label>Last Name:
+          <input name="lastName" value="<%- user.lastName %>" />
+        </label>
+      </div>
+    </div>
+    <div class="card card-body" id="card-background">
+      <label>E-Mail:
+        <input name="email" value="<%- user.email %>" />
+      </label>
+    </div>
+    <div class="card card-body" id="card-background">
+      <label>Company:
+        <input name="company" value="<%- user.company %>" />
+      </label>
+    </div>
+    <div class="card card-body" id="card-background">
+      <label>New password:
+        <input name="newPassword" type="password" />
+      </label>
+    </div>
 
-  <!-- Buttons -->
-  <div class="card-container card card-body">
-    <div>
-      <a href="/users/update/<%- user.id %>">
-        <button type="submit">Save changes</button>
-      </a>
+    <!-- Buttons -->
+    <div class="buttons">
+      <div>
+        <a href="/users/update/<%- user.id %>">
+          <button type="submit">Save changes</button>
+        </a>
+      </div>
+      <div>
+        <a href="/admin/users">
+          <button>Back to Admin Dashboard</button>
+        </a>
+      </div>
     </div>
-    <div>
-      <a href="/admin/users">
-        <button>Back to Admin Dashboard</button>
-      </a>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
+</div>
