@@ -1,48 +1,43 @@
-<h2>Update your information</h2>
-
-<!-- Form -->
-<div class="card-container card card-body">
-  <form action="/profile/my-account/update" method="POST">
-    <label>First Name:
-      <input name="firstName" value="<%- user.firstName %>" />
-    </label>  
-</div>
-<div class="card-container card card-body">  
-    <label>Last Name:
-      <input name="lastName" value="<%- user.lastName %>" />
-    </label>  
-</div>
-<div class="card-container card card-body">  
-    <label>E-Mail:
-      <input name="email" value="<%- user.email %>" />
-    </label>  
-</div>
-<div class="card-container card card-body">  
-    <label>Company:
-      <input name="company" value="<%- user.company %>" />
-    </label>  
-</div>
-<div class="card-container card card-body">  
-    <label>Current password:
-      <input name="password" type="password" />
-    </label>
-    <label>New password:
-      <input name="passwordHash" type="password" />
-    </label>  
-</div>
-
-<!-- Buttons -->
-<div class="card-container card card-body">
-  <div>
-    <a href="/profile/my-account/update">
-      <button type="submit">Save changes</button>
-    </a>
+<div class="dashboard-img d-flex flex-column justify-content-center align-items-center" style="border: 4px solid green">
+  <div class="card" style="width:30%;">
+    <form action="/profile/my-account/update" method="POST">
+      <div class="card-body" id="card-body">
+        <div class="card-body description">
+          <h4 class="card-text"><b>My Account-Details:</b></h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <label>First Name:<br>
+                <input name="firstName" value="<%- user.firstName %>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>Last Name:<br>
+                <input name="lastName" value="<%- user.lastName %>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>E-Mail:<br>
+                <input name="email" value="<%- user.email %>" />
+              </label>
+            </li>
+            <li class="list-group-item">
+              <label>Company:<br>
+                <input name="company" value="<%- user.company %>" />
+              </label>
+            </li>
+          </ul>
+          <div class="card-body">
+            <a href="/profile/my-account/update">
+              <button class="btn btn-primary" id="car-button">Submit</button>
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="/profile/my-account">
+              <button class="btn btn-primary" id="car-button">Back to my Account</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
-  </form>
-  <div>
-    <a href="/profile/my-account">
-      <button>Back to my Account</button>
-    </a>
-  </div>
-</div>
 </div>

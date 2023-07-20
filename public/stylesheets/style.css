@@ -76,11 +76,11 @@ body {
   flex-direction: row;
 }
 
-#form-label {
+/* #form-label {
  
   text-wrap: nowrap;
 
-}
+} */
 
 #car-button {
   background-color: rgb(199, 82, 82);
@@ -420,17 +420,17 @@ input:focus {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 100%;
+  min-height: 100%;
 }
 
-  .dashboard-card {
-    background-color:rgba(139, 176, 187, 0.9);
-    border-radius:5px;
-    overflow: hidden;
-    width: 35%;
-    min-width: 100px;
-    min-height: 200px;
-  }
+.dashboard-card {
+  background-color:rgba(139, 176, 187, 0.9);
+  border-radius:5px;
+  overflow: hidden;
+  width: 35%;
+  min-width: 100px;
+  min-height: 200px;
+}
   
   .links{
   color: white;
