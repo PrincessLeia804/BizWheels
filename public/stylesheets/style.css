@@ -431,7 +431,7 @@ input:focus {
   background-color:rgba(139, 176, 187, 0.9);
   border-radius:5px;
   overflow: hidden;
-  width: 35%;
+  width: 30%;
   min-width: 100px;
   min-height: 200px;
 }
