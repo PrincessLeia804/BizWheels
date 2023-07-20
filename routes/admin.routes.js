@@ -38,6 +38,13 @@ router.post("/fleet/update/:id", async (req, res) => {
   const carUpdate = req.params.id;
   const specsUpdate = req.body;
 
+  if ("isAutomatic" in specsUpdate) {
+    specsUpdate.isAutomatic = specsUpdate.isAutomatic === "true";
+  }
+  else{
+    specsUpdate.isAutomatic = false;
+  }
+
   try {
     const car = await Car.findByIdAndUpdate(
       { _id: carUpdate },
@@ -47,7 +54,7 @@ router.post("/fleet/update/:id", async (req, res) => {
 
     res.redirect(`/admin/fleet/update/${carUpdate}`);
   } catch (error) {
-    console.log("Data couldn't be displayed");
+    console.log("Failed to update car"+error);
   }
 });
 

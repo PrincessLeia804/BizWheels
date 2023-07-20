@@ -1,87 +1,78 @@
 <div class="login-img">
   <h2>Update the Car</h2>
 
-  <div class="form-container" id="form-container">
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <div class="card card-body form-col" id="card-background">
-        <label>Make:
-          <input name="make" value="<%= car.make %>" />
-        </label>
-    
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Model:
-          <input name="model" value="<%= car.model %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Year:
-          <input name="year" value="<%= car.year %>" />
-        </label>
-    </div>
-    <div>
-      <form>
-        <label>Registration:
-          <input name="registration" value="<%= car.registration %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Color:
-          <input name="color" value="<%= car.color %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Mileage:
-          <input name="mileage" value="<%= car.mileage %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Fuel Type:
-          <input name="fuelType" value="<%= car.fuelType %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Features:
-          <input name="features" value="<%= car.features %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Number of Seats:
-          <input name="numberOfSeats" value="<%= car.numberOfSeats %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Automatic:
-          <input name="isAutomatic" value="<%= car.isAutomatic %>" />
-        </label>
-    </div>
-    <div>
-      <form action="/admin/fleet/update/<%- car.id %>" method="POST">
-        <label>Type:
-          <input name="carType" value="<%= car.carType %>" />
-        </label>
-    </div>
-  </div>
+  <form action="/admin/fleet/update/<%- car.id %>" method="POST">
+    <div class="form-container" id="form-container">
+      <div class="card card-body form-col" id="card-background">
+        <div>
+          <label>Make:
+            <input name="make" value="<%= car.make %>" />
+          </label>
+        </div>
 
-  <div class="buttons">
-    <div>
-      <a href="/admin/fleet/update/<%- car.id %>">
-        <button type="submit">Save changes</button>
-      </a>
-    </div>
-    </form>
-    <div>
-      <a href="/admin/fleet">
-        <button type="button">Back to Overview</button>
-      </a>
-    </div>
+        <div>
+          <label>Model:
+            <input name="model" value="<%= car.model %>" />
+          </label>
+        </div>
+        <div>
+          <label>Year:
+            <input name="year" value="<%= car.year %>" />
+          </label>
+        </div>
+        <div>
+          <label>Registration:
+            <input name="registration" value="<%= car.registration %>" />
+          </label>
+        </div>
+        <div>
+          <label>Color:
+            <input name="color" value="<%= car.color %>" />
+          </label>
+        </div>
+        <div>
+          <label>Mileage:
+            <input name="mileage" value="<%= car.mileage %>" />
+          </label>
+        </div>
+        <div>
+          <label>Fuel Type:
+            <input name="fuelType" value="<%= car.fuelType %>" />
+          </label>
+        </div>
+        <div>
+          <label>Features:
+            <input name="features" value="<%= car.features %>" />
+          </label>
+        </div>
+        <div>
+          <label>Number of Seats:
+            <input name="numberOfSeats" value="<%= car.numberOfSeats %>" />
+          </label>
+        </div>
+        <div class="form-check" style="min-width: 100px;">
+          <label class="form-check-label" for="isAutomatic">Automatic</label>
+          <input type="checkbox" name="isAutomatic" id="isAutomatic" <% if (car.isAutomatic) { %>checked<% } %> value="true" />
+        </div>
+        <div>
+          <label>Type:
+            <input name="carType" value="<%= car.carType %>" />
+          </label>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div>
+          <a href="/admin/fleet/update/<%- car.id %>">
+            <button type="submit">Save changes</button>
+          </a>
+        </div>
+  </form>
+  <div>
+    <a href="/admin/fleet">
+      <button type="button">Back to Overview</button>
+    </a>
   </div>
+</div>
 </div>
 </div>
