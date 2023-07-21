@@ -1,6 +1,6 @@
 <div class="dashboard-img pt-4">
   <div class="form-container mt-0">
-    <h2 class="dashboard-h">Update your Travel Request:</h2>
+    <h2 class="dashboard-h display-6 text-center">Update your Travel Request</h2>
 
     <form action="/cars/reservations/update/<%- booking.id %>" method="POST">
       <div class="card card-body form-row" id="card-background">
@@ -43,12 +43,12 @@
       <div class="buttons">
         <div>
           <a href="/cars/reservations/update/<%- booking.id %>">
-            <button class="btn btn-primary" id="car-button">Save changes</button>
+            <button  type="button" class="btn btn-primary" id="car-button">Save changes</button>
           </a>
         </div>
         <div>
           <a href="/cars/reservations">
-            <button class="btn btn-primary" id="car-button">Go back</button>
+            <button type="button" class="btn btn-primary" id="car-button">Go back</button>
           </a>
         </div>
       </div>
