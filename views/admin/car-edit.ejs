@@ -1,15 +1,13 @@
 <div class="login-img">
-  <h2>Update the Car</h2>
-
   <form action="/admin/fleet/update/<%- car.id %>" method="POST">
     <div class="form-container" id="form-container">
+      <h2 class="dashboard-h display-6 text-center" style="color: white;">Update the Car</h2>
       <div class="card card-body form-col" id="card-background">
         <div>
           <label>Make:
             <input name="make" value="<%= car.make %>" />
           </label>
         </div>
-
         <div>
           <label>Model:
             <input name="model" value="<%= car.model %>" />
