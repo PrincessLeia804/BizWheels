@@ -1,5 +1,5 @@
 <div class="login-img" style="width:100%"">
-  <h1>Car Request </h1>
+  <h2 class="dashboard-h display-6"><b>Car Request</b></h2>
 
   <form class="form" action="/cars/request" method="POST" onsubmit="return validateDates()">
 
@@ -51,8 +51,7 @@
       <button type="submit" class="btn btn-primary" id="car-button">Check availability</button>
     </div>
   </form>
-  <h3>Available Cars:</h3>
-  <div class="card-container cars">
+    <div class="card-container cars">
     <% availableCars.forEach(function(car) { %>
     <div class="card">
       <form method="POST" action="/cars/submit-request">

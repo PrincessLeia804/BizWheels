@@ -5,7 +5,7 @@ const {
   getAllCars,
   findCar,
 } = require("../controllers/carController");
-const { createBooking, checkExistingBookings } = require("../controllers/bookingController");
+const { createBooking, checkExistingBookings, getPopulatedUserBookings } = require("../controllers/bookingController");
 const { isLoggedIn } = require("../middleware/route-guard");
 const Car = require("../models/Car.model");
 const BookingModel = require("../models/Booking.model");
@@ -72,9 +72,8 @@ router.get("/reservations", async (req, res, next) => {
   const employee = req.session.user._id
 
   try {
-    const bookings = await BookingModel.find({ employeeId: employee })
-    const carDetails = await Car.find()
-
+    const user = await getPopulatedUserBookings(employee);
+    const bookings = user.bookings;
 
     // sort into previous and upcoming bookings
     const today = new Date();
@@ -88,9 +87,9 @@ router.get("/reservations", async (req, res, next) => {
         prevBookings.push(booking)
       }
     })
-    res.render("cars/reservations", { activeBookings, prevBookings, moment, carDetails })
+    res.render("cars/reservations", { activeBookings, prevBookings, moment })
   } catch (error) {
-    console.log("Bookings couldn't be found");
+    console.log("Bookings couldn't be found"+error);
   }
 })
 
