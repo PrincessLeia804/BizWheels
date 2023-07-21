@@ -487,6 +487,13 @@ input:focus {
   width: 30%;
 }
 
+.container-with-background {
+  background-color: rgba(139, 177, 187, 0.6);
+  align-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 /*forms*/
 

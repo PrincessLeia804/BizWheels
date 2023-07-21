@@ -1,69 +1,87 @@
-<div class="dashboard-img d-flex flex-column justify-content-start align-items-center p-5">
-  <h2 class="dashboard-h display-6">My Reservations</h2>
+<div class="login-img">
 
-  <div class="form-container flex-sm-column align-items-sm-center " id="form-request-container">
-    <% if (activeBookings && activeBookings.length > 0) { %>
-    <% activeBookings.forEach(reservation => { %>
-    <div class="card">
-      <div class="card-body" id="card-body">
-        <h5><u>Vehicle details:</u> <%= reservation.car.make %> <%= reservation.car.model %></h5><br>
-        <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
-        <div class="card-body description">
-          <h3 class="card-text"><b style="color:brown">Active</b></h3>
-          <% if (reservation) { %>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%- reservation.occasion %> </li>
-            <li class="list-group-item"><%- reservation.destination %> </li>
-          </ul>
-          <div class="card-body">
-            <a href="/cars/reservations/update/<%- reservation.id %>">
-              <button class="btn btn-primary" id="car-button">Add Travel Details</button>
-            </a><br>
-            <a href="/cars/reservations/delete/<%- reservation.id%>" onclick="return confirm('Are you sure you want to cancel your reservation?');">
-              <button class="btn btn-primary" id="car-button">Cancel</button>
-            </a>
+  <div class="container-fluid">
+    <div class="container-with-background">
+      <h2 class="dashboard-h display-6 text-center">My Reservations</h2>
+      <div class="row">
+        <% if (activeBookings && activeBookings.length > 0) { %>
+        <% activeBookings.forEach(reservation => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body" id="card-body">
+              <h5>
+                <u>Vehicle details:</u> 
+                <%= reservation.car.make %> <%= reservation.car.model %>
+                <br>
+                (<%= reservation.car.registration %>)
+              </h5>
+              <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
+              <div class="card-body description">
+                <h3 class="card-text"><b style="color:brown">Active</b></h3>
+                <% if (reservation) { %>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><%- reservation.occasion %> </li>
+                  <li class="list-group-item"><%- reservation.destination %> </li>
+                </ul>
+                <div class="card-body">
+                  <a href="/cars/reservations/update/<%- reservation.id %>">
+                    <button class="btn btn-primary" id="car-button">Add Travel Details</button>
+                  </a><br>
+                  <a href="/cars/reservations/delete/<%- reservation.id%>" onclick="return confirm('Are you sure you want to cancel your reservation?');">
+                    <button class="btn btn-primary" id="car-button">Cancel</button>
+                  </a>
+                </div>
+                <% } %>
+              </div>
+            </div>
           </div>
-          <% } %>
         </div>
+        <% }) %>
+        <% } else { %>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">No active reservations</h4>
+            </div>
+          </div>
+        </div>
+        <% } %>
       </div>
     </div>
-    <% }) %>
-    <% } else { %>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">No active reservations</h4>
-      </div>
-    </div>
-    <% } %>
   </div>
 
-  <h2 class="dashboard-h display-6">Previous Reservations</h2>
-  <div class="form-container flex-sm-column align-items-sm-center " id="form-request-container">
+  <div class="container-with-background">
+    <h2 class="dashboard-h display-6 text-center">Previous Reservations</h2>
     <div class="card-container cars">
-    <% if (prevBookings && prevBookings.length > 0) { %>
-    <% prevBookings.forEach(reservation => { %>
-    <div class="card">
-      <div class="card-body" id="card-body">
-        <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
-        <div class="card-body description">
-          <p class="card-text"><b>Closed</b></p>
-          <% if (reservation) { %>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%- reservation.occasion %> </li>
-            <li class="list-group-item"><%- reservation.destination %> </li>
-          </ul>
-          <% } %>
+      <% if (prevBookings && prevBookings.length > 0) { %>
+      <% prevBookings.forEach(reservation => { %>
+      <div class="card">
+        <div class="card-body" id="card-body">
+          <h5>
+            <u>Vehicle details:</u>
+            <%= reservation.car.make %> <%= reservation.car.model %> 
+            <br> (<%= reservation.car.registration %>)</h5><br>
+          <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
+          <div class="card-body description">
+            <p class="card-text"><b>Closed</b></p>
+            <% if (reservation) { %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%- reservation.occasion %> </li>
+              <li class="list-group-item"><%- reservation.destination %> </li>
+            </ul>
+            <% } %>
+          </div>
         </div>
       </div>
-    </div>
-    <% }) %>
-    <% } else { %>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">No previous reservations</h4>
+      <% }) %>
+      <% } else { %>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">No previous reservations</h4>
+        </div>
       </div>
+      <% } %>
     </div>
-    <% } %>
   </div>
 </div>
 </div>
