@@ -99,7 +99,6 @@ router.get("/reservations/update/:id", async (req, res) => {
 
   try {
     const booking = await BookingModel.findById(bookingUpdate)
-    console.log('booking: ', booking);
     res.render("cars/reservation-update", { booking, moment })
   } catch (err) {
     console.log(err);

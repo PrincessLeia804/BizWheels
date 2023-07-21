@@ -1,53 +1,56 @@
-<div class="dashboard-img d-flex justify-content-center align-items-start pt-5">
-  <div class="card" style="width:35%;">
+<div class="login-img">
+  <div class="form-container">
+    <h2>My Account-Details:</h2>
+
     <form action="/profile/my-account/update" method="POST">
-      <div class="card-body" id="card-body">
-        <div class="card-body description">
-          <h4 class="card-text"><b>My Account-Details:</b></h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <label>First Name:<br>
-                <input name="firstName" value="<%- user.firstName %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>Last Name:<br>
-                <input name="lastName" value="<%- user.lastName %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>E-Mail:<br>
-                <input name="email" value="<%- user.email %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>Company:<br>
-                <input name="company" value="<%- user.company %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>Current Password:<br>
-                <input name="password" type="password" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>New Password:<br>
-                <input name="passwordHash" type="password" />
-              </label>
-            </li>
-          </ul>
-          <div class="card-body">
+      <div class="card card-body form-row" id="card-background">
+        <div class="form-group col-md-6">
+          <label>First Name:
+            <input name="firstName" class="form-control" value="<%- user.firstName %>" />
+          </label>
+        </div>
+        <div class="col">
+          <label>Last Name:
+            <input name="lastName" value="<%- user.lastName %>" />
+          </label>
+        </div>
+      </div>
+      <div class="card card-body" id="card-background">
+        <label>E-Mail:
+          <input name="email" value="<%- user.email %>" />
+        </label>
+      </div>
+      <div class="card card-body" id="card-background">
+        <label>Company:
+          <input name="company" value="<%- user.company %>" />
+        </label>
+      </div>
+      <div class="card card-body" id="card-background">
+        <label>Current Password:
+          <input name="password" type="password" />
+         <% if (errorMessage) { %>
+          <p class="error-message"> <%- errorMessage%> </p>  
+          <% } %> 
+        </label>
+      </div>
+      <div class="card card-body" id="card-background">
+        <label>New password:
+          <input name="passwordHash" type="password" />
+        </label>
+      </div>
+
+        <div class="buttons">
+          <div>
             <a href="/profile/my-account/update">
-              <button class="btn btn-primary" id="car-button">Submit</button>
+              <button class="btn btn-primary" id="car-button">Save changes</button>
             </a>
           </div>
-          <div class="card-body">
+          <div>
             <a href="/profile/my-account">
               <button class="btn btn-primary" id="car-button">Back to my Account</button>
             </a>
           </div>
         </div>
-      </div>
     </form>
   </div>
 </div>

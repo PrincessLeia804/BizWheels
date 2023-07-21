@@ -1,51 +1,57 @@
-<div class="dashboard-img d-flex justify-content-center align-items-start pt-5">
-  <div class="card" style="width:35%;">
-    <div class="card-body" id="card-body">
-      <form action="/cars/reservations/update/<%- booking.id %>" method="POST">
-        <div class="card-body description">
-          <h4 class="card-text"><b>Update your travel request</b></h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <label>Start Date<br>
-                <input name="startDate" value="<%- moment(booking.startDate).format('LL') %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>New Start Date<br>
-                <input name="newStartDate" type="date" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>End Date<br>
-                <input name="endDate" value="<%- moment(booking.endDate).format('LL') %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>New End Date<br>
-                <input name="newEndDate" type="date" value="<%- moment(booking.endDate).format('LL')%>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>Occasion<br>
-                <input name="occasion" value="<%- booking.occasion %>" />
-              </label>
-            </li>
-            <li class="list-group-item">
-              <label>Destination:<br>
-                <input name="destination" value="<%- booking.destination %>" />
-              </label>
-            </li>
-          </ul>
-          <div class="card-body">
-            <a href="/cars/reservations/update/<%- booking.id %>">
-              <button class="btn btn-primary" id="car-button" type="submit">Save changes</button>
-            </a>
-      </form>
-    </div>
-  </div>
-  <div class="card-body">
-    <a href="/cars/reservations">
-      <button class="btn btn-primary" id="car-button">Back to my Requests</button>
-    </a>
+<div class="dashboard-img pt-4">
+  <div class="form-container mt-0">
+    <h2 class="dashboard-h">Update your Travel Request:</h2>
+
+    <form action="/cars/reservations/update/<%- booking.id %>" method="POST">
+      <div class="card card-body form-row" id="card-background">
+        <div class="form-group col-md-6">
+          <label>Start Date<br>
+            <input name="startDate" class="form-control" value="<%- moment(booking.startDate).format('LL') %>" />
+          </label>
+        </div>
+        <div class="col">
+          <label>New Start Date<br>
+            <input name="newStartDate" class="form-control" type="date" />
+          </label>
+        </div>
+      </div>
+      <div class="card card-body form-row" id="card-background">
+        <div class="form-group col-md-6">
+          <label>End Date<br>
+            <input name="endDate" class="form-control" value="<%- moment(booking.endDate).format('LL') %>" />
+          </label>
+        </div>
+        <div class="col">
+          <label>New End Date<br>
+            <input name="newEndDate" class="form-control" type="date" />
+          </label>
+        </div>
+      </div>
+      <div class="card card-body form-row" id="card-background">
+        <div class="form-group col-md-6">
+          <label>Occasion<br>
+            <input name="occasion" class="form-control" value="<%- booking.occasion %>" />
+          </label>
+        </div>
+        <div class="col">
+          <label>Destination:<br>
+            <input name="destination" class="form-control" value="<%- booking.destination %>" />
+          </label>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div>
+          <a href="/cars/reservations/update/<%- booking.id %>">
+            <button class="btn btn-primary" id="car-button">Save changes</button>
+          </a>
+        </div>
+        <div>
+          <a href="/cars/reservations">
+            <button class="btn btn-primary" id="car-button">Go back</button>
+          </a>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

@@ -5,32 +5,34 @@ const salt = bcrypt.genSaltSync(13);
 
 /* USER DASHBOARD */
 router.get("/", async (req, res, next) => {
-      const userInSession = req.session.user
+  const userInSession = req.session.user
 
-      try {
-        const userData = await UserModel.findOne({email: req.session.user.email})
-        res.render("profiles/user-profile", {user : userData})
-      } catch (error) {
-        console.log(error)
-      }
-  })
-  
-  /* ACCOUNT DETAILS */
-  router.get("/my-account", async(req, res, next) => {
-    try {
-      const userData = await UserModel.findOne({email: req.session.user.email})
-      res.render("profiles/account", {user : userData})
-    } catch (error) {
-      console.log("Data couldn't be displayed");
-    }
-  })
+  try {
+    const userData = await UserModel.findOne({ email: req.session.user.email })
+    res.render("profiles/user-profile", { user: userData })
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+/* ACCOUNT DETAILS */
+router.get("/my-account", async (req, res, next) => {
+  try {
+    const userData = await UserModel.findOne({ email: req.session.user.email })
+    res.render("profiles/account", { user: userData })
+  } catch (error) {
+    console.log("Data couldn't be displayed");
+  }
+})
 
 
-  /* ACCOUNT UPDATE */
+/* ACCOUNT UPDATE */
 router.get("/my-account/update", async (req, res) => {
   try {
-    const userData = await UserModel.findById({_id: req.session.user._id})
-    res.render("profiles/account-update", {user : userData})
+    const userData = await UserModel.findById({ _id: req.session.user._id })
+    console.log('userData: ', userData);
+
+    res.render("profiles/account-update", { user: userData, errorMessage: "" })
   } catch (error) {
     console.log("Data couldn't be displayed");
   }
@@ -40,35 +42,38 @@ router.get("/my-account/update", async (req, res) => {
 router.post("/my-account/update", async (req, res) => {
   const profileUpdate = req.body
 
-  /* Password Check before update*/
-  if(!profileUpdate.passwordHash){
-    delete profileUpdate.passwordHash 
-    delete profileUpdate.password
+  try {
+    if (!profileUpdate.passwordHash) {
+      delete profileUpdate.passwordHash
+      delete profileUpdate.password
 
-    // compare current passwords
-  }else{
-    const pwCheck = await UserModel.findById({_id: req.session.user._id})
-    
-    if(bcrypt.compareSync(profileUpdate.password, pwCheck.passwordHash)){
-      profileUpdate.passwordHash = bcrypt.hashSync(profileUpdate.passwordHash, salt)
-      delete profileUpdate.password 
-      console.log('profileUpdate.passwordHash: ', profileUpdate.passwordHash);
+      const userData = await UserModel.findByIdAndUpdate(
+        { _id: req.session.user._id },
+        { $set: profileUpdate },
+        { new: true })
+
+      res.redirect("/profile/my-account")
 
     } else {
-      res.redirect("/profile/my-account/update")
-    }
-  }
-  
-  // Update db entry
-  try {
-    const userData = await UserModel.findByIdAndUpdate(
-      {_id: req.session.user._id}, 
-      {$set: profileUpdate},
-      {new: true})
+      const pwCheck = await UserModel.findById({ _id: req.session.user._id })
 
-    res.redirect("/profile/my-account")
+      // update password
+      if (bcrypt.compareSync(profileUpdate.password, pwCheck.passwordHash)) {
+        profileUpdate.passwordHash = bcrypt.hashSync(profileUpdate.passwordHash, salt)
+        delete profileUpdate.password
+
+        const userData = await UserModel.findByIdAndUpdate(
+          { _id: req.session.user._id },
+          { $set: profileUpdate },
+          { new: true })
+
+        res.redirect("/profile/my-account")
+      } else{
+        res.render("profiles/account-update", { user: pwCheck, errorMessage: "Current password is incorrect" })
+      }
+    }
   } catch (error) {
-    console.log("Data couldn't be displayed");
+    console.log("An error occurred trying to update user data");
   }
 })
 
@@ -76,7 +81,7 @@ router.post("/my-account/update", async (req, res) => {
 /* DELETE PROFILE */
 router.get("/my-account/delete", async (req, res, next) => {
   try {
-    const userData = await UserModel.findByIdAndDelete({_id: req.session.user._id})
+    const userData = await UserModel.findByIdAndDelete({ _id: req.session.user._id })
     res.redirect("/")
   } catch (error) {
     console.log("Account could not be deleted");
@@ -84,4 +89,4 @@ router.get("/my-account/delete", async (req, res, next) => {
 })
 
 
-  module.exports = router;
+module.exports = router;
