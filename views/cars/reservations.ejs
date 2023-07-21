@@ -7,12 +7,12 @@
         <% if (activeBookings && activeBookings.length > 0) { %>
         <% activeBookings.forEach(reservation => { %>
         <div class="col-md-4 mb-4">
-          <div class="card">
+          <div class="card" style="min-height: 400px">
             <div class="card-body" id="card-body">
               <h5>
-                <u>Vehicle details:</u> 
+                <u>Vehicle details:</u>
                 <%= reservation.car.make %> <%= reservation.car.model %>
-                <br>
+                <!-- <br> -->
                 (<%= reservation.car.registration %>)
               </h5>
               <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
@@ -50,38 +50,40 @@
     </div>
   </div>
 
-  <div class="container-with-background">
-    <h2 class="dashboard-h display-6 text-center">Previous Reservations</h2>
-    <div class="card-container cars">
-      <% if (prevBookings && prevBookings.length > 0) { %>
-      <% prevBookings.forEach(reservation => { %>
-      <div class="card">
-        <div class="card-body" id="card-body">
-          <h5>
-            <u>Vehicle details:</u>
-            <%= reservation.car.make %> <%= reservation.car.model %> 
-            <br> (<%= reservation.car.registration %>)</h5><br>
-          <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
-          <div class="card-body description">
-            <p class="card-text"><b>Closed</b></p>
-            <% if (reservation) { %>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><%- reservation.occasion %> </li>
-              <li class="list-group-item"><%- reservation.destination %> </li>
-            </ul>
-            <% } %>
+  <div class="container-fluid">
+    <div class="container-with-background">
+      <h2 class="dashboard-h display-6 text-center">Previous Reservations</h2>
+      <div class="card-container cars">
+        <% if (prevBookings && prevBookings.length > 0) { %>
+        <% prevBookings.forEach(reservation => { %>
+        <div class="card">
+          <div class="card-body" id="card-body">
+            <h5>
+              <u>Vehicle details:</u>
+              <%= reservation.car.make %> <%= reservation.car.model %>
+              (<%= reservation.car.registration %>)
+            </h5><br>
+            <h4 class="card-title"><%= moment(reservation.startDate).format('LL') %> - <%= moment(reservation.endDate).format('LL') %></h4>
+            <div class="card-body description">
+              <p class="card-text"><b>Closed</b></p>
+              <% if (reservation) { %>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%- reservation.occasion %> </li>
+                <li class="list-group-item"><%- reservation.destination %> </li>
+              </ul>
+              <% } %>
+            </div>
           </div>
         </div>
-      </div>
-      <% }) %>
-      <% } else { %>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">No previous reservations</h4>
+        <% }) %>
+        <% } else { %>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">No previous reservations</h4>
+          </div>
         </div>
+        <% } %>
       </div>
-      <% } %>
     </div>
   </div>
-</div>
 </div>
