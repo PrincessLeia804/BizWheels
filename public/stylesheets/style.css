@@ -405,8 +405,8 @@ body {
   overflow: hidden;
   width: 35%;
   opacity: 0;
-  animation: fadeIn 2s;
-  animation-delay: 1.5s;
+  animation: fadeIn 0.5s;
+  animation-delay: 0.5s;
   animation-fill-mode: forwards;
 }
 
